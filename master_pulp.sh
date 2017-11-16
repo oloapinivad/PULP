@@ -14,7 +14,7 @@ PULPDIR=$(pwd)
 python=python
 cdozip="cdo -f nc4 -z zip"
 
-varlist="p t u v l q w tr2"
+varlist="p t u v l q w"
 #varlist="l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdtadv wtbuo wt wtadv"
 
 

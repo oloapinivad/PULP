@@ -8,8 +8,6 @@ import glob
 import os
 import sys
 
-print "Rebuilding 3d files for " + str(sys.argv[3]) + "..."
-
 # to be run from command line with arguments: some defaults
 # are provided to run from virtual environment
 if (len(sys.argv)>1) : 
@@ -21,7 +19,9 @@ else :
 	DIRIN="/Users/paolo/Desktop/uclales_post/"+expname+"/run"
 	var='u'
 
-# numbero of files to collect
+print "Rebuilding 3d files for " + var + "..."
+
+# number of files to collect
 nx=len(glob.glob1(DIRIN,expname + ".0000????.nc"))
 ny=len(glob.glob1(DIRIN,expname + ".????0000.nc"))
 
@@ -31,45 +31,36 @@ if os.path.exists(savefile_3D):
         os.remove(savefile_3D)
 ncfile_3D = Dataset(savefile_3D,'w', format='NETCDF4')
 
-# define zt,zt,time and y dimension
-y=[]
-for i in range(nx) :
-        filename=DIRIN+"/"+expname+"."+ "0000" +"%04d" % i +".nc"
-        a=Dataset(filename)
-	y.append(a.variables['yt'][:])
-        if i==0 :
-		for dim in ['zt','zm','time'] :
-			if (dim=='time') :
-				vv=a.variables[dim][:]
-			else :
-				vv=a.variables[dim][1:]
-			ncfile_3D.createDimension(dim, len(vv))
-			ncvar=ncfile_3D.createVariable(dim,'f4',dim,fill_value=-999,zlib=False)
-			ncvar[:]=vv
-			ncvar.units=a.variables[dim].units
-			ncvar.longname=a.variables[dim].longname
-                z=a.variables['zt'][1:]	
-		t=a.variables['time'][:]
-                sx=range(len(a.variables['xt'][:]))
-                sy=range(len(a.variables['yt'][:]))
-		ncfile_3D.createDimension('yt', len(a.variables['yt'][:])*nx)
-        a.close()
-ncvar=ncfile_3D.createVariable('yt','f4','yt',fill_value=-999,zlib=False)
-y=np.hstack(y)
-ncvar[:]=y
+# define zt,zm,time yt and xt dimension
+# python need to create dimensions and variables 
+# xt and yt are deduced from grid spacing and number of files, only one file is opened
+filename=DIRIN+"/"+expname+"."+ "00000000.nc"
+a=Dataset(filename)
+y=a.variables['yt'][:]; #y.mask=False
+x=a.variables['xt'][:]; #x.mask=False
+# loop on dimensions
+for dim in ['xt','yt','zt','zm','time'] :
+	if (dim=='time') :
+		vv=a.variables[dim][:]
+		t=vv
+	elif (dim=='xt') :
+		vv=range(int(x[0]),int(x[0])+int(np.diff(x)[0])*len(x)*ny,int(np.diff(x)[0]))
+		x=vv
+	elif (dim=='yt') :
+		vv=range(int(y[0]),int(y[0])+int(np.diff(y)[0])*len(y)*nx,int(np.diff(y)[0]))
+		y=vv
+	else :
+		vv=a.variables[dim][1:]
+		z=vv
+	ncfile_3D.createDimension(dim, len(vv))
+	ncvar=ncfile_3D.createVariable(dim,'f4',dim,fill_value=-999,zlib=False)
+	ncvar[:]=vv
+	ncvar.units=a.variables[dim].units
+	ncvar.longname=a.variables[dim].longname
+a.close()
 
-# define x dimension
-x=[]
-for j in range(ny) :
-	filename=DIRIN+"/"+expname+"." +"%04d" % j +"0000.nc"
-        a=Dataset(filename)
-        x.append(a.variables['xt'][:])
-	if (j==0) :
-		ncfile_3D.createDimension('xt', len(a.variables['xt'][:])*ny)
-	a.close()
-ncvar=ncfile_3D.createVariable('xt','f4','xt',fill_value=-999,zlib=False)
-x=np.hstack(x)
-ncvar[:]=x
+#keep in mind dimension of a single file
+sx=range(len(x)/ny); sy=range(len(y)/nx)
 
 # loop on variable
 field=np.zeros((len(t),len(x),len(y),len(z)+1))
@@ -129,4 +120,5 @@ print "Done!!!"
 #print final.shape
 
 # close files	
+ncfile_3D.setncattr("Postprocess","Postprocessed with PULP v0.1")
 ncfile_3D.close()
