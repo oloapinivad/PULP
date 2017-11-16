@@ -19,6 +19,17 @@ else :
 	DIRIN="/Users/paolo/Desktop/uclales_post/"+expname+"/run"
 	var='u'
 
+# since previous code in NCL change the name of some variable for
+# retrocompatibility we kept the same renaming, playing with 'var_in' and 'var_out'
+# you can override it setting both var_out=var_in=var 
+def rename_var(x):
+    return {
+        'tl': 't', 'pr': 'p', 'tr': 'tracer', 'tr2': 's01','sc': 's00', 'rf': 'rflx'
+    }.get(x, x)
+
+var_out=var
+var_in=rename_var(var)
+
 print "Rebuilding 3d files for " + var + "..."
 
 # number of files to collect
@@ -26,7 +37,7 @@ nx=len(glob.glob1(DIRIN,expname + ".0000????.nc"))
 ny=len(glob.glob1(DIRIN,expname + ".????0000.nc"))
 
 # output file definition and creation
-savefile_3D= DIRIN + "/" + expname + "_" + var + "_py.3d.nc"
+savefile_3D= DIRIN + "/" + expname + "_" + var_out + "_py.3d.nc"
 if os.path.exists(savefile_3D):
         os.remove(savefile_3D)
 ncfile_3D = Dataset(savefile_3D,'w', format='NETCDF4')
@@ -36,22 +47,24 @@ ncfile_3D = Dataset(savefile_3D,'w', format='NETCDF4')
 # xt and yt are deduced from grid spacing and number of files, only one file is opened
 filename=DIRIN+"/"+expname+"."+ "00000000.nc"
 a=Dataset(filename)
-y=a.variables['yt'][:]; #y.mask=False
-x=a.variables['xt'][:]; #x.mask=False
+
+#use list and dictionary to loop on it
+dim_list=['xt','yt','zt','zm','time']
+dim_dict={x: [] for x in dim_list}
+
 # loop on dimensions
-for dim in ['xt','yt','zt','zm','time'] :
+for dim in dim_list :
 	if (dim=='time') :
 		vv=a.variables[dim][:]
-		t=vv
 	elif (dim=='xt') :
+		x=a.variables[dim][:]
 		vv=range(int(x[0]),int(x[0])+int(np.diff(x)[0])*len(x)*ny,int(np.diff(x)[0]))
-		x=vv
 	elif (dim=='yt') :
+		y=a.variables[dim][:]
 		vv=range(int(y[0]),int(y[0])+int(np.diff(y)[0])*len(y)*nx,int(np.diff(y)[0]))
-		y=vv
 	else :
 		vv=a.variables[dim][1:]
-		z=vv
+	dim_dict[dim]=vv
 	ncfile_3D.createDimension(dim, len(vv))
 	ncvar=ncfile_3D.createVariable(dim,'f4',dim,fill_value=-999,zlib=False)
 	ncvar[:]=vv
@@ -60,10 +73,11 @@ for dim in ['xt','yt','zt','zm','time'] :
 a.close()
 
 #keep in mind dimension of a single file
-sx=range(len(x)/ny); sy=range(len(y)/nx)
+sx=range(len(dim_dict['xt'])/ny)
+sy=range(len(dim_dict['yt'])/nx)
 
-# loop on variable
-field=np.zeros((len(t),len(x),len(y),len(z)+1))
+# loop on files, predeclare the array
+field=np.zeros((len(dim_dict['time']),len(dim_dict['xt']),len(dim_dict['yt']),len(dim_dict['zt'])+1))
 for i in range(nx) :
 	for j in range(ny) :
 		filename_3D=DIRIN+"/"+expname+"."+ "%04d" % j +"%04d" % i +".nc"
@@ -71,9 +85,9 @@ for i in range(nx) :
 
 		#extract attributes
 		if (i==0 and j==0) :
-			units=a.variables[var].units
-			longname=a.variables[var].longname
-			firstdim=a.variables[var].dimensions[3]
+			units=a.variables[var_in].units
+			longname=a.variables[var_in].longname
+			firstdim=a.variables[var_in].dimensions[3]
 	
 			#copy generic attributes of NetCDF
 			for name in a.ncattrs() :
@@ -82,24 +96,24 @@ for i in range(nx) :
 		#select and place subdomain
 		xselect=[xx+(len(sx)*j) for xx in sx]
 		yselect=[[len(sy)*i+sy[yy]] for yy in range(len(sy))]
-		field[:,yselect,xselect,:]=a.variables[var][:]
+		field[:,yselect,xselect,:]=a.variables[var_in][:]
 
 # transpose to python-valid dimensions (time,zt,yt,xt)
 final=np.transpose(field,(0,3,1,2))
 
 # create file
-ncvar=ncfile_3D.createVariable(var,'f4',('time','zt','yt','xt'),fill_value=-999,zlib=False)
+ncvar=ncfile_3D.createVariable(var_out,'f4',('time','zt','yt','xt'),fill_value=-999,zlib=False)
 
 # special u/v case (Arakawa-C grid)
 # please note that some issue is still there when compare to original ncl script
-if (var=='u') :
+if (var_out=='u') :
 	print "special u case"
 	final2=final[:,1:,:,:]
 	final2[:,:,:,1:]=0.5*(final[:,1:,:,:-1] + final[:,1:,:,1:])
         final2[:,:,:,0]=0.5*(final[:,1:,:,0] + final[:,1:,:,-1])
 	ncvar[:]=final2	
 		
-elif (var=='v') : 
+elif (var_out=='v') : 
 	print "special v case"
 	final2=final[:,1:,:,:]
 	final2[:,:,1:,:]=0.5*(final[:,1:,:-1,:] + final[:,1:,1:,])
