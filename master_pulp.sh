@@ -6,16 +6,16 @@
 # master script
 # based on python and cdo (just to merge and compress 3d data)
 
-expname="dycoms2_rf01_ty00"
-DIRIN=/Users/paolo/Desktop/uclales_post/$expname/run
-POSTDIR=/Users/paolo/Desktop/uclales_post/$expname/post
+expname="dycoms2_rf01_sev02"
+DIRIN=/rigel/glab/users/pd2507/uclales/$expname/run
+POSTDIR=/rigel/glab/users/pd2507/uclales/$expname/post
 PULPDIR=$(pwd)
 
 python=python
 cdozip="cdo -f nc4 -z zip"
 
 #varlist="p t u v l q w"
-#varlist="pr"
+#varlist="u"
 varlist="l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdtadv wtbuo wt wtadv"
 
 

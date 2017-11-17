@@ -15,8 +15,8 @@ if (len(sys.argv)>1) :
 	expname=sys.argv[2]
 	var=str(sys.argv[3])
 else :	
-	expname="dycoms2_rf01_sex00"
-	DIRIN="/Users/paolo/Desktop/uclales_post/"+expname+"/run"
+	expname="dycoms2_rf01_sev02"
+	DIRIN="/rigel/glab/users/pd2507/uclales/"+expname+"/run"
 	var='u'
 
 # since previous code in NCL change the name of some variable for
@@ -58,9 +58,13 @@ for dim in dim_list :
 		vv=a.variables[dim][:]
 	elif (dim=='xt') :
 		x=a.variables[dim][:]
+		if (hasattr(x,"mask")==True) :
+			x.mask=False
 		vv=range(int(x[0]),int(x[0])+int(np.diff(x)[0])*len(x)*ny,int(np.diff(x)[0]))
 	elif (dim=='yt') :
 		y=a.variables[dim][:]
+		if (hasattr(y,"mask")==True) :
+                        y.mask=False
 		vv=range(int(y[0]),int(y[0])+int(np.diff(y)[0])*len(y)*nx,int(np.diff(y)[0]))
 	else :
 		vv=a.variables[dim][1:]

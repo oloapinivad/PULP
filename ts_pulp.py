@@ -18,10 +18,7 @@ else :
 maxvars=["cfl","maxdiv","wmax","rlmax","bflxmx","bflxrmx","precip_m"]
 minvars=["bflxmn","bflxrmn"]
 
-expname="dycoms2_rf01_ty00"
-DIRIN="/Users/paolo/Desktop/uclales_post/"+expname+"/run"
-
-savefile_ts= DIRIN + "/" + expname + "py.ts.nc"
+savefile_ts= DIRIN + "/" + expname + ".py.ts.nc"
 ncfile_ts = Dataset(savefile_ts,'w', format='NETCDF4')
 time = ncfile_ts.createDimension('time', None)
 times = ncfile_ts.createVariable('time', 'f4', ('time',)) 
