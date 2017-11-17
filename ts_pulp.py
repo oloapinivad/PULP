@@ -55,6 +55,12 @@ for var in varlist[1:len(varlist)] :
 	ncvar=ncfile_ts.createVariable(var,'f4',('time'),fill_value=-999,zlib=True,complevel=1)
 	ncvar[:]=final
 	times[:]=T
-ncfile_ts.close()
 
+#copy generic attributes of NetCDF
+for name in a.ncattrs() :
+        ncfile_ts.setncattr(name, a.getncattr(name))
+ncfile_ts.setncattr("Postprocess","Postprocessed with PULP v0.1")
+
+#close
+ncfile_ts.close()
 print "Done!"

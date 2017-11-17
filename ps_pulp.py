@@ -67,7 +67,12 @@ for var in varlist[0:len(varlist)] :
 	ncvar[:]=final
 	ncvar.units=units
 	ncvar.longname=longname
-	
-ncfile_ps.close()
 
+#copy generic attributes of NetCDF
+for name in a.ncattrs() :
+	ncfile_ps.setncattr(name, a.getncattr(name))
+ncfile_ps.setncattr("Postprocess","Postprocessed with PULP v0.1")	
+
+#close
+ncfile_ps.close()
 print "Done!"

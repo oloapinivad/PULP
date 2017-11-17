@@ -1,0 +1,49 @@
+#!/bin/bash
+#SBATCH -A glab     
+#SBATCH -J postproc_EXP
+#SBATCH -t 01:00:00            
+#SBATCH -v
+#SBATCH -c 8
+#SBATCH -o /rigel/glab/users/pd2507/log/postproc/post_dycoms_EXP_%j.out
+
+#folder and experiment definition
+expname="EXP"
+RUNDIR=/rigel/glab/users/pd2507/uclales/$expname/run
+POSTDIR=/rigel/glab/users/pd2507/uclales/$expname/post
+PULPDIR=/rigel/home/pd2507/PULP
+mkdir -p $POSTDIR
+
+#cdo and python paths
+cdo=/rigel/home/pd2507/opt/bin/cdonew
+python=/usr/bin/python
+cdozip="cdo -f nc4 -z zip"
+
+#parallel procs and variables selection
+#varlist=(l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdtadv wtbuo wt wtadv)
+varlist=(l q pr tl w u v rf tr sc tr2 dwdt dwdtbuo dwdtdif dwdtadv)
+ll=${#varlist[@]}
+np=8
+
+# reconstuct ps and ts files, already NetCDF4 zip
+python $PULPDIR/ts_pulp.py $RUNDIR $expname
+python $PULPDIR/ps_pulp.py $RUNDIR $expname
+mv $RUNDIR/${expname}*py*nc $POSTDIR
+
+# loop on 3d variables: this is divided in order to exploit of parallel cores if available
+for l1 in $(seq 0 $np $ll) ; do
+    for l2 in $(seq $l1 $((l1+np-1))) ; do
+            python $PULPDIR/3d_pulp.py $RUNDIR $expname ${varlist[$l2]} &
+    done
+wait
+done
+
+# merge into a unique file using cdo and compress in NetCDF4 zip
+# select last time step: this is done with CDO
+rm -f $RUNDIR/${expname}_.nc
+rm -f $POSTDIR/${expname}.py.3d.nc
+$cdozip merge  $RUNDIR/${expname}_*_py.3d.nc $POSTDIR/${expname}.py.3d.nc
+#$cdozip delete,timestep=1 $RUNDIR/$expname.3d.nc $POSTDIR/${expname}.3d.nc
+ntime=$(cdo ntime $RUNDIR/$expname.00000000.nc)
+$cdozip seltimestep,$ntime $POSTDIR/${expname}.py.3d.nc $POSTDIR/${expname}.py.3dlast.nc
+rm $RUNDIR/${expname}_*_py.3d.nc
+

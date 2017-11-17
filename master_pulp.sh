@@ -14,7 +14,6 @@ PULPDIR=$(pwd)
 python=python
 cdozip="cdo -f nc4 -z zip"
 
-#varlist="p t u v l q w"
 #varlist="u"
 varlist="l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdtadv wtbuo wt wtadv"
 
@@ -24,14 +23,17 @@ python $PULPDIR/ts_pulp.py $DIRIN $expname
 python $PULPDIR/ps_pulp.py $DIRIN $expname
 mv $DIRIN/${expname}*py*nc $POSTDIR
 
-#loop on 3d variables: this is divided in order to exploit of parallel cores if available
+# loop on 3d variables: this is divided in order to exploit of parallel cores if available
 for var in $varlist ; do
 	echo $var
 	python $PULPDIR/3d_pulp.py $DIRIN $expname $var
 done
 
-#merge into a unique file using cdo and compress in NetCDF4 zip
+# merge into a unique file using cdo and compress in NetCDF4 zip
+# select last time step: this is done with CDO
 rm -f $POSTDIR/${expname}.py.3d.nc
 $cdozip merge  $DIRIN/${expname}_*_py.3d.nc $POSTDIR/${expname}.py.3d.nc
+ntime=$(cdo ntime $RUNDIR/$expname.00000000.nc)
+$cdozip seltimestep,$ntime $POSTDIR/${expname}.py.3d.nc $POSTDIR/${expname}.py.3dlast.nc
 rm $DIRIN/${expname}_*_py.3d.nc
 	
