@@ -15,20 +15,17 @@ CONFIGDIR=$CODEDIR/config
 
 #set folders
 if [[ $compiler == "ifort" ]] ; then
-        #module load intel-parallel-studio/2017 netcdf-fortran/4.4.4 
         export I_MPI_F90=ifort
         export FC="ifort"
         export OMPI_MPIF90=ifort
-        cp $CONFIGDIR/${arch}.${compiler}.cmake  $CONFIGDIR/default.cmake
 fi
 
-#if [[ $compiler == "gfortran" ]] ; then
-#        export I_MPI_F90=gfortran
-#        export FC="gfortran"
-#        cp $CONFIGDIR/default.cmake.gfortran  $CONFIGDIR/default.cmake
-#fi
+if [[ $compiler == "gfortran" ]] ; then
+        export I_MPI_F90=gfortran
+        export FC="gfortran"
+fi
 
-
+cp $CONFIGDIR/${arch}.${compiler}.cmake  $CONFIGDIR/default.cmake
 #rm -rf $CODEDIR/build
 mkdir -p $CODEDIR/build 
 cd $CODEDIR/build
@@ -36,5 +33,5 @@ cd $CODEDIR/build
 #compile
 cmake -D MPI=TRUE $CODEDIR
 make -j 4
-mv uclales uclales2_standard
+mv uclales uclales2_scalars
 cd -

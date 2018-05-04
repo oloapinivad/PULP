@@ -1,0 +1,227 @@
+#!/bin/bash
+#SBATCH -A glab     
+#SBATCH -J dycoms2_test01
+#SBATCH -t 00:09:00
+#SBATCH -v
+#SBATCH -n 32
+#SBATCH --exclusive
+#SBATCH -o /rigel/glab/users/pd2507/log/uclales2/dycoms2_test01_%j.out
+#SBATCH -e /rigel/glab/users/pd2507/log/uclales2/dycoms2_test01_%j.err
+
+
+#load modules
+module load intel-parallel-studio/2017
+
+#expname
+exptype=dycoms2_rf01
+expcode=test01
+
+# increment for autosubmit (how many second to run a restart)
+increment=360
+
+#executable and revisions and procs
+execfile=uclales2_scalars
+nprocs=32
+
+#domain size, horizontal resolution and max timestepping
+domain_size=128
+deltax=20
+deltay=20
+dtlong=2
+
+#vertical grid
+grdtyp=1 #3 for special zm_grid, 1 for regular grid
+
+#parameter for regular grid, valid for grdtyp=1
+vertical_levels=210
+stretch_height=950
+stretch_factor=1.15
+deltaz=5
+
+#name of special grid zm_grid, valid for grdtyp=3
+grdname=dycoms2_rf01_zaxis_259.txt #found in INITDIR, see below
+
+#surface fluxes (RF01 should be dthcon=15. and drtcon=115.)
+dthcon=15.
+drtcon=115.
+
+#restart option
+anyrestart=false
+#valid only if restart is true
+exp_restart=hevs00
+time_restart=10800
+
+#when end the simulation
+timmax=720
+
+#output and frequency of storage
+saverestart=3600
+an0=60
+an1=60
+timets=15
+timeps=60
+
+##------ no need to work below this line ---------#
+
+# creating folders
+SCRATCHDIR=/rigel/glab/users/pd2507
+HOME=/rigel/home/pd2507
+expname=${exptype}_${expcode}
+CODEDIR=$HOME/uclales2
+RUNDIR=$SCRATCHDIR/uclales2/$expname/run
+INITDIR=$HOME/PULP/initfiles/$exptype
+NAMEDIR=$HOME/PULP/namelist/$exptype
+POSTPROC=$HOME/PULP/postproc
+namelist=$NAMEDIR/namelist_$expname
+ENDRUN=0
+
+# FIRST LEG #    
+#---------------------#
+
+#keep the name of exp restart for postprocessing
+if [[ "$anyrestart" = true ]] ; then
+        exp_restart_true=${exp_restart}
+else
+        exp_restart_true=${expcode}
+fi
+
+#first loop: if rundir does not exists
+if [[ ! -d $RUNDIR ]] ; then
+
+	# clean restart: create running dir
+	rm -rf $RUNDIR; mkdir -p $RUNDIR
+	ln -s $CODEDIR/build/$execfile $RUNDIR/
+	cp $NAMEDIR/namelist_dycoms2_rf01_TEST $namelist
+
+	#restart options: if restart from other experiment take info from there
+	if [[ "$anyrestart" = true ]] ; then
+		RESTARTDIR=/rigel/home/pd2507/scratch/uclales2/dycoms2_rf01_${exp_restart}/run/
+		time_restart_pad=$(printf "%07d\n" ${time_restart})
+ 		restartname=dycoms2_rf01_${exp_restart}.${time_restart_pad}s
+ 		ln -s $RESTARTDIR/*$restartname $RUNDIR
+		sed -i "/hfilin/c\  hfilin = '$restartname'" $namelist
+		sed -i "/runtype/c\  runtype = 'HISTORY' " $namelist
+		legbreak=$((10#${time_restart}+$increment))
+
+	#otherwise brand new experiments from scratch
+	else
+		cp $INITDIR/sound_in_dycm01 $RUNDIR/sound_in
+		legbreak=$increment
+	fi
+
+#if rundir exists is an autosubmit restart!
+else
+	exp_restart=$expcode
+	RESTARTDIR=/rigel/home/pd2507/scratch/uclales2/dycoms2_rf01_${exp_restart}/run/
+        cd $RESTARTDIR
+        restart_time=$(ls 0000_0000*${exp_restart}.*s | tail -1 | cut -f3 -d"." | cut -c1-7 | sed 's/^0*//')
+        restart_string=$(ls 0000_0000*${exp_restart}.*s | tail -1 | cut -f3 -d".")
+        restartname=dycoms2_rf01_${exp_restart}.$restart_string
+        legbreak=$((${restart_time} + $increment))
+
+	#clean previous leg to save space (if it is not a required frequency)
+        legremove=$((${restart_time} - $increment))
+	legremove_pad=$(printf "%07d\n" $legremove)
+	if [[ $(( legremove % saverestart )) != 0 ]] ; then
+        	rm *${exp_restart}*${legremove_pad}s*
+	fi
+	
+	#stop if we have get to maximum time
+        if [[ $legbreak -gt $timmax ]] ; then
+                echo "it's over guys!"
+                ENDRUN=1
+        fi
+	
+	#set namelist for restart	
+	sed -i "/hfilin/c\  hfilin = '$restartname'" $namelist
+        sed -i "/runtype/c\  runtype = 'HISTORY' " $namelist
+fi
+
+#data frequency to be saved 
+if [[ $legbreak -gt $an0 ]] ; then
+        ansave=$an1
+else
+        ansave=$an0
+fi
+
+#copy grid if needed
+if [[ $grdtyp == 3 ]] ; then
+	cp $INITDIR/$grdname $RUNDIR/zm_grid_in
+fi
+
+#set grid type
+sed -i "/igrdtyp/c\  igrdtyp = $grdtyp" $namelist
+
+
+#if we need to run the experiment
+if [[ $ENDRUN == 0 ]] ; then
+
+	# go to working dir
+	cd $RUNDIR
+	dsize=$((${domain_size}+4))
+
+	# additional setup for NAMELIST file
+	sed -i "/filprf/c\  filprf = '$expname'" $namelist
+	sed -i "/frqanl/c\  frqanl = $ansave " $namelist
+	sed -i "/frqhis/c\  frqhis = $increment " $namelist
+	sed -i "/timmax/c\  timmax = $legbreak" $namelist
+	sed -i "/nxp =/c\  nxp = $dsize" $namelist
+	sed -i "/nyp =/c\  nyp = $dsize" $namelist
+	sed -i "/nzp =/c\  nzp = ${vertical_levels}" $namelist
+	sed -i "/ssam_intvl/c\  ssam_intvl = $timets" $namelist
+	sed -i "/savg_intvl/c\  savg_intvl = $timeps" $namelist
+	sed -i "/deltax/c\  deltax = ${deltax}." $namelist
+	sed -i "/deltay/c\  deltay = ${deltay}." $namelist
+	sed -i "/deltaz/c\  deltaz = ${deltaz}." $namelist
+	sed -i "/dzmax/c\  dzmax = ${stretch_height}." $namelist
+	sed -i "/dzrat/c\  dzrat = ${stretch_factor}" $namelist
+	#sed -i "/evcool/c\  evcool = .${evcool}." $namelist
+	sed -i "/dtlong/c\  dtlong = ${dtlong}" $namelist
+	sed -i "/dthcon/c\  dthcon = ${dthcon}" $namelist
+	sed -i "/drtcon/c\  drtcon = ${drtcon}" $namelist
+
+	cp $namelist  $RUNDIR/NAMELIST
+
+
+	#  running the model  #
+	echo -n " Job started at: "
+	date
+	echo -n " Executed by host: "
+	hostname
+	mpiexec -np $nprocs -bootstrap slurm ./$execfile
+	echo -n " Job ended at: "
+	date
+
+	wait
+	sleep 10 #safety check to avoid hyperloops!
+	sbatch $HOME/PULP/jobs/dycoms2_rf01/${expcode}.job
+	sleep 10 #safety check to avoid hyperloops!
+
+#if the experiment is over, run the postprocessing!
+else
+
+# POSTPROC #
+#--------------------#
+
+	restart_ps=$((10#$time_restart / $timeps + 1 ))
+        restart_ts=$((10#$time_restart / $timets + 1 ))
+        echo $timeps $timets
+        echo $restart_ps $restart_ts
+
+	np_postproc=10
+	if [[ $dsize -ge 260 ]] ; then
+		np_postproc=2
+	fi
+
+	echo -n " Launching postprocessing... "
+	cp $POSTPROC/python_postproc_default.job postproc_${expname}.job
+	sed -i "s/EXP/$expcode/" postproc_${expname}.job
+	sed -i "s/RESTART_NAME/${exp_restart_true}/" postproc_${expname}.job
+	sed -i "s/NP/${np_postproc}/" postproc_${expname}.job
+	sed -i "s/ANYRESTART/$anyrestart/" postproc_${expname}.job
+	sed -i "s/RESTART_PS/${restart_ps}/" postproc_${expname}.job
+	sed -i "s/RESTART_TS/${restart_ts}/" postproc_${expname}.job
+
+	sbatch postproc_${expname}.job
+
+fi

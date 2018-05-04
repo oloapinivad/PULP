@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -A glab     
 #SBATCH -J postproc_EXP
-#SBATCH -t 11:59:00            
+#SBATCH -t 00:59:00            
 #SBATCH -v
 #SBATCH -c 8
 #SBATCH -o /rigel/glab/users/pd2507/log/postproc/post_dycoms_EXP_%j.out
@@ -9,9 +9,9 @@
 #folder and experiment definition
 exp=EXP
 expname=dycoms2_rf01_${exp}
-RUNDIR=/rigel/glab/users/pd2507/uclales/$expname/run
-POSTDIR=/rigel/glab/users/pd2507/uclales/$expname/post
-PULPDIR=/rigel/home/pd2507/PULP
+RUNDIR=/rigel/glab/users/pd2507/uclales2/$expname/run
+POSTDIR=/rigel/glab/users/pd2507/uclales2/$expname/post
+PULPDIR=/rigel/home/pd2507/PULP/postproc/script
 mkdir -p $POSTDIR
 
 #cdo and python paths
@@ -20,7 +20,8 @@ python=/usr/bin/python
 cdozip="cdo -f nc4 -z zip"
 
 #parallel procs and variables selection
-varlist=(l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdtadv wtbuo wt wtadv)
+#varlist=(l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdtadv wtbuo wt wtadv)
+varlist=(l q w pr tl u v rf tr scbl scft)
 #varlist=(l q pr tl w u v rf tr sc tr2 dwdt dwdtbuo dwdtdif dwdtadv)
 ll=${#varlist[@]}
 np=NP
