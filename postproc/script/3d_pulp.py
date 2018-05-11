@@ -31,7 +31,19 @@ def rename_var(x):
 var_out=var
 var_in=rename_var(var)
 
-print "Rebuilding 3d files for " + var + "..."
+#loading one single file
+filename=DIRIN+"/"+expname+"."+ "00000000.nc"
+a=Dataset(filename)
+
+# check if variables is there, if not exit
+varlist=a.variables.keys()
+if any(t==var_in for t in varlist):
+        print "Variable found!"
+	print "Rebuilding 3d files for " + var + "..."
+else :
+        print "Variable missing!! Exiting... "
+        sys.exit()
+
 
 # number of files to collect
 nx=len(glob.glob1(DIRIN,expname + ".0000????.nc"))
@@ -46,18 +58,6 @@ ncfile_3D = Dataset(savefile_3D,'w', format='NETCDF4')
 # define zt,zm,time yt and xt dimension
 # python need to create dimensions and variables 
 # xt and yt are deduced from grid spacing and number of files, only one file is opened
-filename=DIRIN+"/"+expname+"."+ "00000000.nc"
-a=Dataset(filename)
-
-# check if variables is there, if not exit
-varlist=a.variables.keys()
-if any(t==var_in for t in varlist): 
-	print "Variable found!"
-else :
-	print "Variable missing!! Exiting... "
-	sys.exit()
-	
-
 #use list and dictionary to loop on it
 dim_list=['xt','yt','zt','zm','time']
 dim_dict={x: [] for x in dim_list}

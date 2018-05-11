@@ -1,11 +1,14 @@
 #!/bin/bash
 
+#rename your executable
+renamer=tendencies01
+
 #set general folders
 CODEDIR=$HOME/uclales2
 compiler=ifort
 arch=habanero
 
-# modules
+# modules (if you need them)
 #module load intel-parallel-studio/2017 netcdf-fortran/4.4.4 netcdf/gcc/64/4.4.0
 #module load mpich/ge/gcc/64/3.2rc2  gcc/4.8.5 netcdf-fortran/4.4.4
 #module load netcdf-fortran/4.4.4 openmpi/mlnx/gcc/64/1.10.3rc4
@@ -33,5 +36,5 @@ cd $CODEDIR/build
 #compile
 cmake -D MPI=TRUE $CODEDIR
 make -j 4
-mv uclales uclales2_scalars
+mv uclales uclales2_${renamer}
 cd -

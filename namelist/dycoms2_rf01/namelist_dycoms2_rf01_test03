@@ -1,28 +1,28 @@
  &model
-  nxp =   68
-  nyp =   68
-  nzp =   130
+  nxp = 68
+  nyp = 68
+  nzp = 210
   deltax = 20.
   deltay = 20.
-  deltaz = 10.
+  deltaz = 5.
   nxpart = .true.
-  dzmax  = 1200.
-  dzrat  = 1.5
+  dzmax = 950.
+  dzrat = 1.15
   igrdtyp = 1
-  dtlong = 2.
+  dtlong = 2
   distim = 300.
-  timmax = 21600.
-  frqanl =  120.
-  frqhis = 120.
-  runtype = "INITIAL"
+  timmax = 1800
+  frqanl = 600 
+  frqhis = 1800 
+  runtype = 'HISTORY' 
   case_name = 'dycoms'
   level = 2
   CCN = 100.e6
   prndtl = -0.3333333
-  filprf = 'rf01'
-  hfilin = 'rf01.h.rst'
-  ssam_intvl = 15.
-  savg_intvl = 15.
+  filprf = 'dycoms2_rf01_test03'
+  hfilin = 'dycoms2_rf01_test03.0001800s'
+  ssam_intvl = 15
+  savg_intvl = 60
   corflg = .true.  
   cntlat =  31.5 
   strtim = 0.0
@@ -45,6 +45,6 @@
   tau_bl=800.
   lscalar_ft=.true.
   tau_ft=4000.
-  laddwt=.false.
+  laddwt = .true.
  /
 
