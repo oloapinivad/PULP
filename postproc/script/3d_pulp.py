@@ -15,8 +15,8 @@ if (len(sys.argv)>1) :
 	expname=sys.argv[2]
 	var=str(sys.argv[3])
 else :	
-	expname="dycoms2_rf01_sev02"
-	DIRIN="/rigel/glab/users/pd2507/uclales/"+expname+"/run"
+	expname="dycoms2_rf01_test00"
+	DIRIN="/rigel/glab/users/pd2507/uclales2/"+expname+"/run"
 	var='u'
 
 # since previous code in NCL change the name of some variable for
@@ -24,13 +24,26 @@ else :
 # you can override it setting both var_out=var_in=var 
 def rename_var(x):
     return {
-        'tl': 't', 'pr': 'p', 'tr': 'tracer', 'tr2': 's01','sc': 's00', 'rf': 'rflx'
+        'tl': 't', 'pr': 'p', 'tr': 'tracer', 'tr2': 's01','sc': 's00', 'rf': 'rflx',
+	'tr':'cvrx'
     }.get(x, x)
 
 var_out=var
 var_in=rename_var(var)
 
-print "Rebuilding 3d files for " + var + "..."
+#loading one single file
+filename=DIRIN+"/"+expname+"."+ "00000000.nc"
+a=Dataset(filename)
+
+# check if variables is there, if not exit
+varlist=a.variables.keys()
+if any(t==var_in for t in varlist):
+        print "Variable found!"
+	print "Rebuilding 3d files for " + var + "..."
+else :
+        print "Variable missing!! Exiting... "
+        sys.exit()
+
 
 # number of files to collect
 nx=len(glob.glob1(DIRIN,expname + ".0000????.nc"))
@@ -45,9 +58,6 @@ ncfile_3D = Dataset(savefile_3D,'w', format='NETCDF4')
 # define zt,zm,time yt and xt dimension
 # python need to create dimensions and variables 
 # xt and yt are deduced from grid spacing and number of files, only one file is opened
-filename=DIRIN+"/"+expname+"."+ "00000000.nc"
-a=Dataset(filename)
-
 #use list and dictionary to loop on it
 dim_list=['xt','yt','zt','zm','time']
 dim_dict={x: [] for x in dim_list}

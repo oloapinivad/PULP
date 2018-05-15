@@ -19,14 +19,14 @@ varlist="l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdt
 
 
 # reconstuct ps and ts files, already NetCDF4 zip
-python $PULPDIR/ts_pulp.py $DIRIN $expname
-python $PULPDIR/ps_pulp.py $DIRIN $expname
+python $PULPDIR/script/ts_pulp.py $DIRIN $expname
+python $PULPDIR/script/ps_pulp.py $DIRIN $expname
 mv $DIRIN/${expname}*py*nc $POSTDIR
 
 # loop on 3d variables: this is divided in order to exploit of parallel cores if available
 for var in $varlist ; do
 	echo $var
-	python $PULPDIR/3d_pulp.py $DIRIN $expname $var
+	python $PULPDIR/script/3d_pulp.py $DIRIN $expname $var
 done
 
 # merge into a unique file using cdo and compress in NetCDF4 zip
