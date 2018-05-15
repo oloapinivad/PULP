@@ -14,13 +14,13 @@
   timmax = 1800
   frqanl = 60 
   frqhis = 1800 
-  runtype = 'HISTORY' 
+  runtype = "INITIAL"
   case_name = 'dycoms'
   level = 2
   CCN = 100.e6
   prndtl = -0.3333333
   filprf = 'dycoms2_rf01_test04'
-  hfilin = 'dycoms2_rf01_test04.0001800s'
+  hfilin = 'rf01.h.rst'
   ssam_intvl = 15
   savg_intvl = 60
   corflg = .true.  
@@ -39,11 +39,11 @@
   mag_pert_t = 0.01
   mag_pert_q = 0.
   div=0.00000375
-  lcouvreux=.false.
+  lcouvreux=.true.
   tau=600.
   lscalar_bl=.true.
   tau_bl=800.
-  lscalar_ft=.false.
+  lscalar_ft=.true.
   tau_ft=4000.
   laddwt=.false.
  /

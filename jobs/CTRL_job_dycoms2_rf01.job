@@ -1,12 +1,11 @@
 #!/bin/bash
 #SBATCH -A glab     
-#SBATCH -J dycoms2_test04
-#SBATCH -t 00:30:00
+#SBATCH -J dycoms2_[EXPCODE]
+#SBATCH -t 00:10:00
 #SBATCH -v
 #SBATCH -n 32
-#SBATCH --exclusive
-#SBATCH -o /rigel/glab/users/pd2507/log/uclales2/dycoms2_test04_%j.out
-#SBATCH -e /rigel/glab/users/pd2507/log/uclales2/dycoms2_test04_%j.err
+#SBATCH -o /rigel/glab/users/pd2507/log/uclales2/dycoms2_[EXPCODE]_%j.out
+#SBATCH -e /rigel/glab/users/pd2507/log/uclales2/dycoms2_[EXPCODE]_%j.err
 
 
 #load modules
@@ -14,16 +13,21 @@ module load intel-parallel-studio/2017
 
 #expname
 exptype=dycoms2_rf01
-expcode=test04
+expcode=[EXPCODE]
 
 #when end the simulation
-timmax=1800
+timmax=600
 
 # increment for autosubmit (how many second to run a restart)
 increment=$timmax
 
+#tendencies and ecs flags
+laddwt=true
+lecs=false
+lwaterbudget=false
+
 #executable and revisions and procs
-execfile=uclales2_tendencies01
+execfile=uclales2_evcool01
 nprocs=32
 
 #domain size, horizontal resolution and max timestepping
@@ -51,17 +55,18 @@ drtcon=115.
 #restart option
 anyrestart=false
 #valid only if restart is true
-exp_restart=hevs00
+exp_restart=$expname
 time_restart=10800
 
 #output and frequency of storage
 saverestart=3600
-an0=60
-an1=60
+an0=100
+an1=100
 timets=15
 timeps=60
 
 ##------ no need to work below this line ---------#
+# ---------- configuration machine-based -------- #
 
 # creating folders
 SCRATCHDIR=/rigel/glab/users/pd2507
@@ -70,9 +75,10 @@ expname=${exptype}_${expcode}
 CODEDIR=$HOME/uclales2
 RUNDIR=$SCRATCHDIR/uclales2/$expname/run
 INITDIR=$HOME/PULP/initfiles/$exptype
-NAMEDIR=$HOME/PULP/namelist/$exptype
+NAMEDIR=$HOME/PULP/namelist
 POSTPROC=$HOME/PULP/postproc
-namelist=$NAMEDIR/namelist_$expname
+namebase=$NAMEDIR/CTRL_namelist_${exptype}
+namelist=$NAMEDIR/${exptype}/namelist_$expname
 ENDRUN=0
 
 # FIRST LEG #    
@@ -86,12 +92,14 @@ else
 fi
 
 #first loop: if rundir does not exists
+#rm -rf $RUNDIR
 if [[ ! -d $RUNDIR ]] ; then
 
 	# clean restart: create running dir
 	rm -rf $RUNDIR; mkdir -p $RUNDIR
 	ln -s $CODEDIR/build/$execfile $RUNDIR/
-	cp $NAMEDIR/namelist_dycoms2_rf01_TEST $namelist
+	mkdir -p $NAMEDIR/${exptype}
+	cp $namebase $namelist
 
 	#restart options: if restart from other experiment take info from there
 	if [[ "$anyrestart" = true ]] ; then
@@ -175,10 +183,13 @@ if [[ $ENDRUN == 0 ]] ; then
 	sed -i "/deltaz/c\  deltaz = ${deltaz}." $namelist
 	sed -i "/dzmax/c\  dzmax = ${stretch_height}." $namelist
 	sed -i "/dzrat/c\  dzrat = ${stretch_factor}" $namelist
-	#sed -i "/evcool/c\  evcool = .${evcool}." $namelist
 	sed -i "/dtlong/c\  dtlong = ${dtlong}" $namelist
 	sed -i "/dthcon/c\  dthcon = ${dthcon}" $namelist
 	sed -i "/drtcon/c\  drtcon = ${drtcon}" $namelist
+	sed -i "/laddwt/c\  laddwt = .${laddwt}." $namelist
+        sed -i "/lecs/c\  lecs = .${lecs}." $namelist
+	sed -i "/lwaterbudget/c\  lwaterbudget = .${lwaterbudget}." $namelist
+        
 
 	cp $namelist  $RUNDIR/NAMELIST
 
@@ -193,9 +204,9 @@ if [[ $ENDRUN == 0 ]] ; then
 	date
 
 	wait
-	#sleep 10 #safety check to avoid hyperloops!
-	#sbatch $HOME/PULP/jobs/dycoms2_rf01/${expcode}.job
-	#sleep 10 #safety check to avoid hyperloops!
+	sleep 10 #safety check to avoid hyperloops!
+	sbatch $HOME/PULP/jobs/dycoms2_rf01/${expcode}.job
+	sleep 10 #safety check to avoid hyperloops!
 
 #if the experiment is over, run the postprocessing!
 else

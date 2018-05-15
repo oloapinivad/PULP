@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #rename your executable
-renamer=tendencies01
+renamer=evcool
 
 #set general folders
 CODEDIR=$HOME/uclales2

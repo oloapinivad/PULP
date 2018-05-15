@@ -33,16 +33,18 @@
   th00 = 289.
   umean =  7.
   vmean = -5.5
-  lcouvreux = .true.
-  tau = 3200.
-  tau2 = 3200.
-  tausc = 400.
-  naddsc = 2
   zrand = 950
   mag_pert_t = 0.01
   mag_pert_q = 0.
   div=0.00000375
-  lwaterbudget=.true.
-  evcool=.true.
+  lcouvreux=.true.
+  tau=600.
+  lscalar_bl=.true.
+  tau_bl=800.
+  lscalar_ft=.true.
+  tau_ft=4000.
+  laddwt=.false.
+  lecs=.false.
+  lwaterbudget=.false.
  /
 
