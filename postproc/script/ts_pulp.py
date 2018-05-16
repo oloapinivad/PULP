@@ -59,7 +59,7 @@ for var in varlist[1:len(varlist)] :
 #copy generic attributes of NetCDF
 for name in a.ncattrs() :
         ncfile_ts.setncattr(name, a.getncattr(name))
-ncfile_ts.setncattr("Postprocess","Postprocessed with PULP v0.1")
+ncfile_ts.setncattr("Postprocess","Postprocessed with PULP v0.2")
 
 #close
 ncfile_ts.close()

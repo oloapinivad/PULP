@@ -31,13 +31,13 @@ savefile_ps= DIRIN + "/" + expname + ".py.ps.nc"
 if os.path.exists(savefile_ps):
 	os.remove(savefile_ps)
 ncfile_ps = Dataset(savefile_ps,'w', format='NETCDF4')
-ncfile_ps.createDimension('zm', len(a.variables['zm'][:]))
-ncfile_ps.createDimension('zt', len(a.variables['zt'][:]))
+ncfile_ps.createDimension('zm', len(a.variables['zm'][1:]))
+ncfile_ps.createDimension('zt', len(a.variables['zt'][1:]))
 ncfile_ps.createDimension('time',len(a.variables['time'][:]))
 a.close()
 
-ncfile_ps.createDimension('x', 1)
-ncfile_ps.createDimension('y', 1)
+#ncfile_ps.createDimension('x', 1)
+#ncfile_ps.createDimension('y', 1)
 
 for var in varlist[0:len(varlist)] :
 	
@@ -60,18 +60,30 @@ for var in varlist[0:len(varlist)] :
 		final=np.mean(field,axis=0)
 
 	if (ndims==1) :
-		ncvar=ncfile_ps.createVariable(var,'f4',(firstdim),fill_value=-999,zlib=True,complevel=1)
+		ncvar=ncfile_ps.createVariable(var,'f4',firstdim,fill_value=-999,zlib=True,complevel=1)
+		if (firstdim=='zt') :
+                	ncvar[:]=final[1:]
+		if (firstdim=='zm') :
+			ncvar[:]=0.5*(final[1:]+final[:-1])
+		if (firstdim=='time') : 
+			ncvar[:]=final
 	if (ndims==2) :
-		ncvar=ncfile_ps.createVariable(var,'f4',('time',firstdim,'x','y'),fill_value=-999,zlib=True,complevel=1)
-	
-	ncvar[:]=final
+		#ncvar=ncfile_ps.createVariable(var,'f4',('time','zt','x','y'),fill_value=-999,zlib=True,complevel=1)
+		ncvar=ncfile_ps.createVariable(var,'f4',('time','zt'),fill_value=-999,zlib=True,complevel=1)
+		if (firstdim=='zt') :
+                	ncvar[:]=final[:,1:]
+        	if (firstdim=='zm') :
+                	ncvar[:]=0.5*(final[:,1:]+final[:,:-1])
+
 	ncvar.units=units
 	ncvar.longname=longname
 
 #copy generic attributes of NetCDF
 for name in a.ncattrs() :
 	ncfile_ps.setncattr(name, a.getncattr(name))
-ncfile_ps.setncattr("Postprocess","Postprocessed with PULP v0.1")	
+
+#add details
+ncfile_ps.setncattr("Postprocess","Postprocessed with PULP v0.2")	
 
 #close
 ncfile_ps.close()

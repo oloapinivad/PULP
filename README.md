@@ -1,7 +1,7 @@
 # PULP v0.2
 ## Postprocessing for Ucla-Les with Python
 
-Nov 2017
+Nov 2017 - May 2018
 
 by P. Davini (ISAC-CNR, p.davini@isac.cnr.it)
 

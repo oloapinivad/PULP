@@ -148,5 +148,5 @@ print "Done!!!"
 #print final.shape
 
 # close files	
-ncfile_3D.setncattr("Postprocess","Postprocessed with PULP v0.1")
+ncfile_3D.setncattr("Postprocess","Postprocessed with PULP v0.2")
 ncfile_3D.close()
