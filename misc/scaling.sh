@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR=/rigel/glab/users/pd2507/log/uclales
+DIR=/rigel/glab/users/pd2507/log/uclales2
 filein=$(ls -tr $DIR/*.out | tail -1)
 back=5000
 #filein=$DIR/ucla_dycoms_dssa_6137237.out

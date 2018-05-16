@@ -9,9 +9,10 @@
 #folder and experiment definition
 exp=EXP
 expname=dycoms2_rf01_${exp}
-RUNDIR=/rigel/glab/users/pd2507/uclales2/$expname/run
-POSTDIR=/rigel/glab/users/pd2507/uclales2/$expname/post
-PULPDIR=/rigel/home/pd2507/PULP/postproc/script
+OUTDIR=/rigel/glab/users/pd2507/uclales2/
+RUNDIR=$OUTDIR/$expname/run
+POSTDIR=$OUTDIR/$expname/post
+PULPDIR=$HOME/PULP/postproc/script
 mkdir -p $POSTDIR
 
 #cdo and python paths
@@ -37,7 +38,7 @@ if [[ "$anyrestart" = true ]] ; then
 	restart_ts=RESTART_TS
 	exprestart=RESTART_NAME
 	expnamerestart=dycoms2_rf01_${exprestart}
-        RESTARTDIR=/rigel/glab/users/pd2507/uclales/$expnamerestart/post
+        RESTARTDIR=$OUTDIR/$expnamerestart/post
         $cdo cat -seltimestep,1/$restart_ts $RESTARTDIR/$expnamerestart.py.ts.nc $RUNDIR/$expname.py.ts.nc $POSTDIR/$expname.py.ts.nc
         $cdo cat -seltimestep,1/$restart_ps $RESTARTDIR/$expnamerestart.py.ps.nc $RUNDIR/$expname.py.ps.nc $POSTDIR/$expname.py.ps.nc
 else
