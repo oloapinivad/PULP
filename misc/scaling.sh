@@ -2,7 +2,8 @@
 DIR=/rigel/glab/users/pd2507/log/uclales2
 filein=$(ls -tr $DIR/*.out | tail -1)
 back=5000
-#filein=$DIR/ucla_dycoms_dssa_6137237.out
+filein=$DIR/dycoms2_rf01_recs04_6797410.out
+filein=$DIR/dycoms2_rf01_recs03_6634698.out
 #cat  $filein | grep "step"
 #lines=$(cat  $filein | grep "Timestep" | wc -l)
 #total=$(cat  $filein | grep "Timestep" | awk '{ SUM += $11} END { print SUM }')

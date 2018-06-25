@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH -A glab     
-#SBATCH -J dycoms2_rf01_EXPERIMENT
-#SBATCH -t 00:10:00
+#SBATCH -J decs00
+#SBATCH -t 00:30:00
 #SBATCH -v
 #SBATCH -n 64
-#SBATCH -o /rigel/glab/users/pd2507/log/uclales2/dycoms2_rf01_EXPERIMENT_%j.out
-#SBATCH -e /rigel/glab/users/pd2507/log/uclales2/dycoms2_rf01_EXPERIMENT_%j.err
+#SBATCH -o /rigel/glab/users/pd2507/log/uclales2/dycoms2_rf02_decs00_%j.out
+#SBATCH -e /rigel/glab/users/pd2507/log/uclales2/dycoms2_rf02_decs00_%j.err
 
 # P. Davini - May 18
 # complete jobscript for automatic resubmission with leg handling
@@ -21,16 +21,16 @@ module load intel-parallel-studio/2017
 #----------------exp name-----------------#
 
 #expname
-exptype=dycoms2_rf01
-expcode=EXPERIMENT
+exptype=dycoms2_rf02
+expcode=decs00
 
 #----------------exp length-----------------#
 
 #when end the simulation
-timmax=900
+timmax=14400
 
 # increment for autosubmit (how many second to run a restart)
-increment=450
+increment=1800
 
 #maximum timestep
 dtlong=4
@@ -39,14 +39,19 @@ dtlong=4
 
 #tendencies and ecs flags
 laddwt=true
-lecs=true
+lecs=false
 lwaterbudget=true
+radMcICA=true
 
 #-----------exp exec and procs--------------#
 
 #executable and revisions and procs
 execfile=uclales2_evcool
 nprocs=64
+
+#-----------------init file-----------------#
+
+initfile=sound_in_dycm01_dry00
 
 #------------------exp grid-----------------#
 
@@ -68,13 +73,22 @@ deltaz=5
 #name of special grid zm_grid, valid for grdtyp=3
 grdname=dycoms2_rf01_zaxis_259.txt #found in INITDIR, see below
 
+#------------------physics-----------------#
+
 #surface fluxes (RF01 should be dthcon=15. and drtcon=115.)
-dthcon=15.
-drtcon=115.
+# 		(RF02 should be dthcon=16. and drtcon=93.)
+dthcon=16.
+drtcon=93.
+
+#radiative (should 2 for GCSS RF01. 4 for delta-4 stream)
+iradtyp=2
+
+#backrad (only for interactive radiation)
+backradname=backrad_in
 
 #------------------exp restart-----------------#
 
-#restart option
+#restart flag
 anyrestart=false
 #valid only if restart is true
 exp_restart=$expname
@@ -102,6 +116,7 @@ RUNDIR=$SCRATCHDIR/uclales2/$expname/run
 INITDIR=$HOME/PULP/initfiles/$exptype
 NAMEDIR=$HOME/PULP/namelist
 POSTPROC=$HOME/PULP/postproc
+RADDIR=$HOME/PULP/initfiles/rad_needed
 namebase=$NAMEDIR/CTRL_namelist_${exptype}
 namelist=$NAMEDIR/${exptype}/namelist_$expname
 ENDRUN=0
@@ -138,7 +153,7 @@ if [[ ! -d $RUNDIR ]] ; then
 
 	#otherwise brand new experiments from scratch
 	else
-		cp $INITDIR/sound_in_dycm01 $RUNDIR/sound_in
+		cp $INITDIR/$initfile $RUNDIR/sound_in
 		legbreak=$increment
 	fi
 
@@ -182,6 +197,11 @@ if [[ $grdtyp == 3 ]] ; then
 	cp $INITDIR/$grdname $RUNDIR/zm_grid_in
 fi
 
+if [[ $iradtyp == 4 ]] ; then
+	cp $RADDIR/$backradname $RUNDIR/backrad_in
+	cp -r $RADDIR/datafiles $RUNDIR
+fi
+
 #set grid type
 sed -i "/igrdtyp/c\  igrdtyp = $grdtyp" $namelist
 
@@ -214,7 +234,8 @@ if [[ $ENDRUN == 0 ]] ; then
 	sed -i "/laddwt/c\  laddwt = .${laddwt}." $namelist
         sed -i "/lecs/c\  lecs = .${lecs}." $namelist
 	sed -i "/lwaterbudget/c\  lwaterbudget = .${lwaterbudget}." $namelist
-        
+	sed -i "/iradtyp/c\  iradtyp = ${iradtyp}" $namelist
+	sed -i "/radMcICA/c\  radMcICA = .${radMcICA}." $namelist
 
 	cp $namelist  $RUNDIR/NAMELIST
 
@@ -230,7 +251,7 @@ if [[ $ENDRUN == 0 ]] ; then
 	wait
 
 	#safety check for resubmission, based on the logfile -> need to be specified!
-	logfile=$SCRATCHDIR/uclales2/${exptype}_${expcode}_${SLURM_JOB_ID}.out
+	logfile=$SCRATCHDIR/log/uclales2/${exptype}_${expcode}_${SLURM_JOB_ID}.out
 	check=$(grep "successfully" $logfile)
 	if [[ -z $check ]] ; then
 		echo "Something failed, exiting..."
@@ -258,7 +279,8 @@ else
 
 	echo -n " Launching postprocessing... "
 	cp $POSTPROC/python_postproc_default.job postproc_${expname}.job
-	sed -i "s/EXP/$expcode/" postproc_${expname}.job
+	sed -i "s/EXPCODE/$expcode/" postproc_${expname}.job
+	sed -i "s/EXPTYPE/$exptype/" postproc_${expname}.job
 	sed -i "s/RESTART_NAME/${exp_restart_true}/" postproc_${expname}.job
 	sed -i "s/NP/${np_postproc}/" postproc_${expname}.job
 	sed -i "s/ANYRESTART/$anyrestart/" postproc_${expname}.job

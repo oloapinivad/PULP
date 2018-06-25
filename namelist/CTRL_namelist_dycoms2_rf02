@@ -16,8 +16,8 @@
   frqhis = 120.
   runtype = "INITIAL"
   case_name = 'dycoms'
-  level = 2
-  CCN = 100.e6
+  level = 3
+  CCN = 55.e6
   prndtl = -0.3333333
   filprf = 'rf01'
   hfilin = 'rf01.h.rst'
@@ -27,8 +27,8 @@
   cntlat =  31.5 
   strtim = 0.0
   iradtyp = 2
-  dthcon = 15.
-  drtcon = 115.
+  dthcon = 16.
+  drtcon = 93.
   ubmin  = -0.25
   th00 = 289.
   umean =  7.
