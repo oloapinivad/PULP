@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #rename your executable
-renamer=evcool2
+renamer=evcool_nolh
 
 #set general folders
 CODEDIR=$HOME/uclales2
