@@ -45,6 +45,9 @@ cat >> expdescr.R << EOF
 	if (execfile=="uclales2_evcool_nothermo") {name=paste(name,"nothermo")}
 	if (execfile=="uclales2_evcool_nocond") {name=paste(name,"CHS")}
 	if (execfile=="uclales2_evcool_nolh") {name=paste(name,"Lv=0")}
+	if (execfile=="uclales2_evcool_cumECS") {name=paste(name,"cumECS")}
+	if (execfile=="uclales2_evcool_noliquid") {name=paste(name,"cumECS+CHS")}
+	if (lecs=="true" & execfile=="uclales2_evcool_cumECStest2") {name=paste(name,"cum")}
         out=list(exptype=exptype,expcode=expcode,name=name,reso=reso
 	,domain=domain,lecs=lecs,iradtyp=iradtyp,grdtyp=grdtyp)
         return(out)

@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -A glab     
 #SBATCH -J postproc_EXPCODE
-#SBATCH -t 01:59:00            
+#SBATCH -t 11:59:00            
 #SBATCH -v
 #SBATCH -c NP
 #SBATCH -o /rigel/glab/users/pd2507/log/postproc/post_dycoms_EXPCODE_%j.out
@@ -23,7 +23,8 @@ cdozip="cdo -f nc4 -z zip"
 
 #parallel procs and variables selection
 #varlist=(l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdtadv wtbuo wt wtadv)
-varlist=(l q w pr tl u v rf tr scbl scft wtadv wttot wtdif wtbuo wtbecs hecs)
+#varlist=(l q w pr tl u v rf tr scbl scft wtadv wttot wtdif wtbuo wtbecs hecs lstar cloud)
+varlist=(l q w pr tl u v rf tr scbl scft wtadv wttot wtdif wtbuo hcond hevap lstar cloud)
 ll=${#varlist[@]}
 np=NP
 anyrestart=ANYRESTART

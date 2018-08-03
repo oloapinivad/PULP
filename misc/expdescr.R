@@ -36,6 +36,24 @@ exp.name<-function(expcode) {
 	       grdtyp="1"
 	       execfile="uclales2_evcool"
 	}
+	if (expcode=="fhhs00") {
+	       exptype="dycoms2_rf01"
+	       reso="10x10x5"
+	       domain="512x512"
+	       lecs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_evcool"
+	}
+	if (expcode=="fhhs01") {
+	       exptype="dycoms2_rf01"
+	       reso="10x10x5"
+	       domain="512x512"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_evcool"
+	}
 	if (expcode=="frad00") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
@@ -198,11 +216,83 @@ exp.name<-function(expcode) {
 	       grdtyp="1"
 	       execfile="uclales2_evcool_nolh"
 	}
-	if (expcode=="test00") {
+	if (expcode=="tecs08") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECS"
+	}
+	if (expcode=="tecs09") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_noliquid"
+	}
+	if (expcode=="tecs10") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="128x128"
 	       lecs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECStest2"
+	}
+	if (expcode=="tecs11") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECStest2"
+	}
+	if (expcode=="tecs12") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECStest2"
+	}
+	if (expcode=="tecs13") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECStest2"
+	}
+	if (expcode=="tecs20") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECS"
+	}
+	if (expcode=="tecs21") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECS"
+	}
+	if (expcode=="test00") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_standard"
@@ -211,7 +301,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="128x128"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_scalars"
@@ -220,7 +310,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="128x128"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_tendencies00"
@@ -229,7 +319,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="64x64"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_tendencies01"
@@ -238,7 +328,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="64x64"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_tendencies01"
@@ -247,7 +337,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="64x64"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_evcool00"
@@ -315,6 +405,24 @@ exp.name<-function(expcode) {
 	       grdtyp="1"
 	       execfile="uclales2_evcool"
 	}
+	if (expcode=="fhhs00") {
+	       exptype="dycoms2_rf01"
+	       reso="10x10x5"
+	       domain="512x512"
+	       lecs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_evcool"
+	}
+	if (expcode=="fhhs01") {
+	       exptype="dycoms2_rf01"
+	       reso="10x10x5"
+	       domain="512x512"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_evcool"
+	}
 	if (expcode=="frad00") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
@@ -477,11 +585,83 @@ exp.name<-function(expcode) {
 	       grdtyp="1"
 	       execfile="uclales2_evcool_nolh"
 	}
-	if (expcode=="test00") {
+	if (expcode=="tecs08") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECS"
+	}
+	if (expcode=="tecs09") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_noliquid"
+	}
+	if (expcode=="tecs10") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="128x128"
 	       lecs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECStest2"
+	}
+	if (expcode=="tecs11") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECStest2"
+	}
+	if (expcode=="tecs12") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECStest2"
+	}
+	if (expcode=="tecs13") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECStest2"
+	}
+	if (expcode=="tecs20") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECS"
+	}
+	if (expcode=="tecs21") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_evcool_cumECS"
+	}
+	if (expcode=="test00") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x5"
+	       domain="128x128"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_standard"
@@ -490,7 +670,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="128x128"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_scalars"
@@ -499,7 +679,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="128x128"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_tendencies00"
@@ -508,7 +688,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="64x64"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_tendencies01"
@@ -517,7 +697,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="64x64"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_tendencies01"
@@ -526,7 +706,7 @@ exp.name<-function(expcode) {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x5"
 	       domain="64x64"
-	       lecs="false"
+	       lecs="true"
 	       iradtyp="2"
 	       grdtyp="1"
 	       execfile="uclales2_evcool00"
@@ -565,6 +745,9 @@ exp.name<-function(expcode) {
 	if (execfile=="uclales2_evcool_nothermo") {name=paste(name,"nothermo")}
 	if (execfile=="uclales2_evcool_nocond") {name=paste(name,"CHS")}
 	if (execfile=="uclales2_evcool_nolh") {name=paste(name,"Lv=0")}
+	if (execfile=="uclales2_evcool_cumECS") {name=paste(name,"cumECS")}
+	if (execfile=="uclales2_evcool_noliquid") {name=paste(name,"cumECS+CHS")}
+	if (lecs=="true" & execfile=="uclales2_evcool_cumECStest2") {name=paste(name,"cum")}
         out=list(exptype=exptype,expcode=expcode,name=name,reso=reso
 	,domain=domain,lecs=lecs,iradtyp=iradtyp,grdtyp=grdtyp)
         return(out)
