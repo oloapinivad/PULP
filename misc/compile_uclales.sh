@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #rename your executable
-renamer=evcool_test
+renamer=ECS-CHS
+mode=Release
 
 #set general folders
 CODEDIR=$HOME/uclales2
@@ -29,12 +30,21 @@ if [[ $compiler == "gfortran" ]] ; then
 fi
 
 cp $CONFIGDIR/${arch}.${compiler}.cmake  $CONFIGDIR/default.cmake
-#rm -rf $CODEDIR/build
-mkdir -p $CODEDIR/build 
-cd $CODEDIR/build
 
-#compile
-cmake -D MPI=TRUE $CODEDIR
+if [[ $mode == "Default" ]] ; then
+	mkdir -p $CODEDIR/build 
+	cd $CODEDIR/build
+else 
+	mkdir -p $CODEDIR/${mode}
+        cd $CODEDIR/${mode}
+fi
+
+#make it
+cmake -DCMAKE_BUILD_TYPE=${mode} -D MPI=TRUE $CODEDIR
 make -j 4
 mv uclales uclales2_${renamer}
+if [[ $mode != "Default" ]] ; then
+	rm -f ../build/${mode}_uclales2_${renamer}
+	ln -s ../${mode}/uclales2_${renamer} ../build/${mode}_uclales2_${renamer}
+fi
 cd -

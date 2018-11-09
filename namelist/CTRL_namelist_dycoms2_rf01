@@ -45,6 +45,7 @@
   tau_ft=4000.
   laddwt=.false.
   lecs=.false.
+  lchs=.false.
   lwaterbudget=.false.
   radMcICA=.true.
  /

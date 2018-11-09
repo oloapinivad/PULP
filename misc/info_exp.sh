@@ -13,20 +13,25 @@ for exptype in $exptypes ; do
 
 	for file in $files ; do
 		echo $file
-		sed -n '1,100p' < $DIR/$file > header.txt
+		sed -n '20,100p' < $DIR/$file > header.txt
 		#head -n 100 $DIR/$file > header.txt
 		. header.txt
+		[ -z $lchs ] && lchs=false
+		[ -z $lecs ] && lecs=false
 		cat >> core_expdescr.R << EOF
 	if (expcode=="$expcode") {
 	       exptype="${exptype}"
 	       reso="${deltax}x${deltay}x${deltaz}"
 	       domain="${domain_size}x${domain_size}"
 	       lecs="$lecs"
+	       lchs="$lchs"
 	       iradtyp="$iradtyp"
 	       grdtyp="${grdtyp}"
 	       execfile="${execfile}"
 	}
 EOF
+unset lchs
+unset lecs
 	done
 done
 
@@ -41,6 +46,7 @@ cat >> expdescr.R << EOF
 	if (grdtyp!="1") {reso=paste0(substr(reso,start=1,stop=6),"x1A")}
         name=reso
         if (lecs=="true") {name=paste(name,"ECS")}
+	if (lchs=="true") {name=paste(name,"CHS")}
         if (iradtyp=="4") {name=paste(name,"FullRad")}
 	if (execfile=="uclales2_evcool_nothermo") {name=paste(name,"nothermo")}
 	if (execfile=="uclales2_evcool_nocond") {name=paste(name,"CHS")}
@@ -49,7 +55,7 @@ cat >> expdescr.R << EOF
 	if (execfile=="uclales2_evcool_noliquid") {name=paste(name,"cumECS+CHS")}
 	if (lecs=="true" & execfile=="uclales2_evcool_cumECStest2") {name=paste(name,"cum")}
         out=list(exptype=exptype,expcode=expcode,name=name,reso=reso
-	,domain=domain,lecs=lecs,iradtyp=iradtyp,grdtyp=grdtyp)
+	,domain=domain,lchs=lchs,lecs=lecs,iradtyp=iradtyp,grdtyp=grdtyp)
         return(out)
 }
 EOF

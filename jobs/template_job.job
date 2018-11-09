@@ -1,28 +1,25 @@
 #!/bin/bash
 #SBATCH -A glab     
-#SBATCH -J decs00
-#SBATCH -t 00:30:00
+#SBATCH -J rubbb0
+#SBATCH -t 01:30:00
 #SBATCH -v
-#SBATCH -n 64
-#SBATCH -o /rigel/glab/users/pd2507/log/uclales2/dycoms2_rf02_decs00_%j.out
-#SBATCH -e /rigel/glab/users/pd2507/log/uclales2/dycoms2_rf02_decs00_%j.err
+#SBATCH -n 128
+#SBATCH -o /rigel/glab/users/pd2507/log/uclales2/dycoms2_rf01_rubbb0_%j.out
+#SBATCH -e /rigel/glab/users/pd2507/log/uclales2/dycoms2_rf01_rubbb0_%j.err
 
-# P. Davini - May 18
+# P. Davini - Nov 18
 # complete jobscript for automatic resubmission with leg handling
-# run should start from scratch, otherwise apply rm -rf $RUNDIR
 # remember to set logfile below also for a proper handling of resubmission
 # includes automatic postprocessing fro PULP suite
-
 
 #load modules
 module load intel-parallel-studio/2017
 
-
 #----------------exp name-----------------#
 
 #expname
-exptype=dycoms2_rf02
-expcode=decs00
+exptype=dycoms2_rf01
+expcode=rubbb0
 
 #----------------exp length-----------------#
 
@@ -33,39 +30,45 @@ timmax=14400
 increment=1800
 
 #maximum timestep
-dtlong=4
+dtlong=1
 
 #----------------exp flags-----------------#
 
+# maing commands
+force_run_from_scratch=false
+auto_resubmit=true
+
 #tendencies and ecs flags
-laddwt=true
+laddwt=false
 lecs=false
-lwaterbudget=true
-radMcICA=true
+lchs=false
+lwaterbudget=false
+
+#passive scalars control
+lcouvreux=false
+lscalar_bl=true
+lscalar_ft=true
+tau=800.
+tau_bl=800.
+tau_ft=4000.
 
 #-----------exp exec and procs--------------#
 
 #executable and revisions and procs
-execfile=uclales2_evcool
-nprocs=64
-
-#-----------------init file-----------------#
-
-initfile=sound_in_dycm01_dry00
+execfile=Release_uclales2_ECS-CHS
+nprocs=128
 
 #------------------exp grid-----------------#
 
 #domain size, horizontal resolution and max timestepping
-domain_size=128
+domain_size=256
 deltax=20
 deltay=20
-dtlong=4
 
 #vertical grid
 grdtyp=1 #3 for special zm_grid, 1 for regular grid
 
 #parameter for regular grid, valid for grdtyp=1
-vertical_levels=210
 stretch_height=950
 stretch_factor=1.15
 deltaz=5
@@ -73,25 +76,34 @@ deltaz=5
 #name of special grid zm_grid, valid for grdtyp=3
 grdname=dycoms2_rf01_zaxis_259.txt #found in INITDIR, see below
 
+#set number of vertical levels
+vertical_levels=259
+[[ $deltaz == 10 ]] && vertical_levels=110
+[[ $deltaz == 5 ]] && vertical_levels=210
+
 #------------------physics-----------------#
 
 #surface fluxes (RF01 should be dthcon=15. and drtcon=115.)
-# 		(RF02 should be dthcon=16. and drtcon=93.)
-dthcon=16.
-drtcon=93.
+dthcon=15.
+drtcon=115.
 
 #radiative (should 2 for GCSS RF01. 4 for delta-4 stream)
 iradtyp=2
 
-#backrad (only for interactive radiation)
+#backrad and montecarlo radiation (only for interactive radiation)
+radMcICA=true
 backradname=backrad_in
+
+#large scale divergence
+#div=0.
+div=0.00000375 #dycoms rf01 default
 
 #------------------exp restart-----------------#
 
 #restart flag
 anyrestart=false
 #valid only if restart is true
-exp_restart=$expname
+exp_restart=texx00
 time_restart=10800
 
 #------------------exp output-----------------#
@@ -131,8 +143,14 @@ else
         exp_restart_true=${expcode}
 fi
 
-#first loop: if rundir does not exists
-#rm -rf $RUNDIR
+# clean if required
+if ${force_run_from_scratch} ; then
+	rm -rf $RUNDIR
+	auto_resubmit=false
+	echo "WARNING: force run from scratch, disabling auto_resubmit"
+fi
+
+# first loop: if rundir does not exists
 if [[ ! -d $RUNDIR ]] ; then
 
 	# clean restart: create running dir
@@ -153,7 +171,7 @@ if [[ ! -d $RUNDIR ]] ; then
 
 	#otherwise brand new experiments from scratch
 	else
-		cp $INITDIR/$initfile $RUNDIR/sound_in
+		cp $INITDIR/sound_in_dycm01 $RUNDIR/sound_in
 		legbreak=$increment
 	fi
 
@@ -233,9 +251,18 @@ if [[ $ENDRUN == 0 ]] ; then
 	sed -i "/drtcon/c\  drtcon = ${drtcon}" $namelist
 	sed -i "/laddwt/c\  laddwt = .${laddwt}." $namelist
         sed -i "/lecs/c\  lecs = .${lecs}." $namelist
+	sed -i "/lchs/c\  lchs = .${lchs}." $namelist
 	sed -i "/lwaterbudget/c\  lwaterbudget = .${lwaterbudget}." $namelist
 	sed -i "/iradtyp/c\  iradtyp = ${iradtyp}" $namelist
+	sed -i "/div/c\  div = ${div}" $namelist
+	sed -i "/lcouvreux/c\  lcouvreux = .${lcouvreux}." $namelist
+	sed -i "/lscalar_ft/c\  lscalar_ft = .${lscalar_ft}." $namelist
+	sed -i "/lscalar_bl/c\  lscalar_bl = .${lscalar_bl}." $namelist
+	sed -i "/tau =/c\  tau = ${tau}" $namelist
+	sed -i "/tau_bl/c\  tau_bl = ${tau_bl}" $namelist
+	sed -i "/tau_ft/c\  tau_ft = ${tau_ft}" $namelist
 	sed -i "/radMcICA/c\  radMcICA = .${radMcICA}." $namelist
+        
 
 	cp $namelist  $RUNDIR/NAMELIST
 
@@ -253,12 +280,12 @@ if [[ $ENDRUN == 0 ]] ; then
 	#safety check for resubmission, based on the logfile -> need to be specified!
 	logfile=$SCRATCHDIR/log/uclales2/${exptype}_${expcode}_${SLURM_JOB_ID}.out
 	check=$(grep "successfully" $logfile)
-	if [[ -z $check ]] ; then
-		echo "Something failed, exiting..."
-	else
+	if [[ ! -z $check ]] && ${auto_resubmit} ; then
 		echo "Resubmitting!"
-		sleep 10 #safety check to avoid hyperloops!
-		sbatch $HOME/PULP/jobs/${exptype}/${expcode}.job
+                sleep 10 #safety check to avoid hyperloops!
+                sbatch $HOME/PULP/jobs/${exptype}/${expcode}.job
+	else
+		echo "Something failed, exiting..."
 	fi
 
 #if the experiment is over, run the postprocessing!
