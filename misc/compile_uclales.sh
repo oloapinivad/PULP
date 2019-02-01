@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #rename your executable
-renamer=ECS-CHS
-mode=Release
+renamer=outrk_smooth
+mode=Default
 
 #set general folders
 CODEDIR=$HOME/uclales2

@@ -48,5 +48,7 @@
   lchs=.false.
   lwaterbudget=.false.
   radMcICA=.true.
+  lmtr=3
+  csx=0.23
  /
 

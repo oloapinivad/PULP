@@ -18,6 +18,7 @@ for exptype in $exptypes ; do
 		. header.txt
 		[ -z $lchs ] && lchs=false
 		[ -z $lecs ] && lecs=false
+		[ -z $casename ] && casename="dycoms"
 		cat >> core_expdescr.R << EOF
 	if (expcode=="$expcode") {
 	       exptype="${exptype}"
@@ -28,10 +29,13 @@ for exptype in $exptypes ; do
 	       iradtyp="$iradtyp"
 	       grdtyp="${grdtyp}"
 	       execfile="${execfile}"
+	       casename="${casename}"
+	       dt="${dtlong}"
 	}
 EOF
 unset lchs
 unset lecs
+unset casename
 	done
 done
 
@@ -44,10 +48,11 @@ EOF
 cat core_expdescr.R >> expdescr.R
 cat >> expdescr.R << EOF
 	if (grdtyp!="1") {reso=paste0(substr(reso,start=1,stop=6),"x1A")}
-        name=reso
+        name=paste0(reso," dt=",dt)
         if (lecs=="true") {name=paste(name,"ECS")}
 	if (lchs=="true") {name=paste(name,"CHS")}
         if (iradtyp=="4") {name=paste(name,"FullRad")}
+	if (casename=="norad") {name=paste(name,"NoRad")}
 	if (execfile=="uclales2_evcool_nothermo") {name=paste(name,"nothermo")}
 	if (execfile=="uclales2_evcool_nocond") {name=paste(name,"CHS")}
 	if (execfile=="uclales2_evcool_nolh") {name=paste(name,"Lv=0")}
