@@ -11,6 +11,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="becs01") {
 	       exptype="dycoms2_rf01"
@@ -23,6 +25,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="becx00") {
 	       exptype="dycoms2_rf01"
@@ -35,6 +39,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="becx01") {
 	       exptype="dycoms2_rf01"
@@ -47,6 +53,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="fhhs00") {
 	       exptype="dycoms2_rf01"
@@ -59,6 +67,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="fhhs01") {
 	       exptype="dycoms2_rf01"
@@ -71,6 +81,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.12"
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="frad00") {
 	       exptype="dycoms2_rf01"
@@ -83,6 +95,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="frad10") {
 	       exptype="dycoms2_rf01"
@@ -95,6 +109,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.5"
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="fsss00") {
 	       exptype="dycoms2_rf01"
@@ -107,6 +123,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="fsss10") {
 	       exptype="dycoms2_rf01"
@@ -119,6 +137,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.5"
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="fsss10") {
 	       exptype="dycoms2_rf01"
@@ -131,6 +151,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales_EVScumdt_NOrad"
 	       casename="dycoms"
 	       dt="2"
+	       div=""
+	       lmtr=""
 	}
 	if (expcode=="of00") {
 	       exptype="dycoms2_rf01"
@@ -143,6 +165,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr=""
 	}
 	if (expcode=="ofb0") {
 	       exptype="dycoms2_rf01"
@@ -155,6 +179,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr=""
 	}
 	if (expcode=="ofb1") {
 	       exptype="dycoms2_rf01"
@@ -167,6 +193,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="0.2"
+	       div="0.00000375"
+	       lmtr=""
 	}
 	if (expcode=="ofb2") {
 	       exptype="dycoms2_rf01"
@@ -179,30 +207,176 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="norad"
 	       dt="2"
+	       div="0."
+	       lmtr=""
+	}
+	if (expcode=="ofd0") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test_vapor"
+	       casename="dycoms"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofd1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test_cl2"
+	       casename="dycoms"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofd2") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test_second"
+	       casename="dycoms"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofd3") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test_avg"
+	       casename="dycoms"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
 	}
 	if (expcode=="ofe0") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x10"
 	       domain="64x64"
-	       lecs="true"
+	       lecs="false"
 	       lchs="false"
 	       iradtyp="2"
 	       grdtyp="1"
-	       execfile="uclales2_outrk"
-	       casename="dycoms"
-	       dt="2"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
 	}
 	if (expcode=="ofe1") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x10"
 	       domain="64x64"
-	       lecs="true"
+	       lecs="false"
 	       lchs="false"
 	       iradtyp="2"
 	       grdtyp="1"
-	       execfile="uclales2_outrk"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofe2") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="4"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofe3") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofe4") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
 	       casename="dycoms"
-	       dt="0.2"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofe5") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="2"
+	}
+	if (expcode=="ofe6") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="ofe7") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="5"
 	}
 	if (expcode=="off0") {
 	       exptype="dycoms2_rf01"
@@ -215,8 +389,80 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="5"
 	}
-	if (expcode=="ogb0") {
+	if (expcode=="ofh0") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofh4") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofhh") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofp4") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="true"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="oft4") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="true"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="oge0") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x10"
 	       domain="64x64"
@@ -224,9 +470,123 @@ exp.name<-function(expcode) {
 	       lchs="false"
 	       iradtyp="2"
 	       grdtyp="1"
-	       execfile="uclales2_outrk"
+	       execfile="uclales2_outrk_test"
 	       casename="dycoms"
-	       dt="2"
+	       dt="4"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="ogh0") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="ogh1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="onc1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="one0") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="one1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="onp1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="true"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="onr1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="norad"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ont1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="true"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="otb0") {
 	       exptype="dycoms2_rf01"
@@ -239,6 +599,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="1"
+	       div="0."
+	       lmtr="3"
 	}
 	if (expcode=="otb1") {
 	       exptype="dycoms2_rf01"
@@ -251,6 +613,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk_test"
 	       casename="dycoms"
 	       dt="1"
+	       div="0."
+	       lmtr="3"
 	}
 	if (expcode=="otb2") {
 	       exptype="dycoms2_rf01"
@@ -263,6 +627,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk_koren"
 	       casename="dycoms"
 	       dt="1"
+	       div="0."
+	       lmtr="5"
 	}
 	if (expcode=="otb3") {
 	       exptype="dycoms2_rf01"
@@ -275,6 +641,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk_koren"
 	       casename="dycoms"
 	       dt="1"
+	       div="0."
+	       lmtr="2"
 	}
 	if (expcode=="pfb0") {
 	       exptype="dycoms2_rf01"
@@ -287,6 +655,22 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="2"
+	}
+	if (expcode=="pfb1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk"
+	       casename="dycoms"
+	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="2"
 	}
 	if (expcode=="qfb0") {
 	       exptype="dycoms2_rf01"
@@ -299,6 +683,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="0.15625"
+	       div="0.00000375"
+	       lmtr="2"
 	}
 	if (expcode=="qfb1") {
 	       exptype="dycoms2_rf01"
@@ -311,6 +697,484 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk_smooth"
 	       casename="dycoms"
 	       dt="0.15625"
+	       div="0.00000375"
+	       lmtr="2"
+	}
+	if (expcode=="qfb2") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="2"
+	}
+	if (expcode=="qfb3") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_koren"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="5"
+	}
+	if (expcode=="qfb4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_koren"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="0"
+	}
+	if (expcode=="qfb5") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_cldcheck"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfb6") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_cldcheck"
+	       casename="norad"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfb7") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_second"
+	       casename="norad"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfb8") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_second"
+	       casename="norad"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfb9") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_diverge"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfc0") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfc1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc2") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_nabla2"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc3") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_nabla2"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc5") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_nabla2"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc6") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc7") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc8") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc9") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfd0") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_vapor"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfd1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_vapor"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfd2") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_vapor"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfd3") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_epsi"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfe0") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="0.5"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfe1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="0.125"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfe4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfe6") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="qfp4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="true"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb0") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="dycoms"
+	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="norad"
+	       dt="2"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qgb2") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="norad"
+	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb3") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_diverge"
+	       casename="norad"
+	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_nodiff"
+	       casename="norad"
+	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb5") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_diverge"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb6") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_diverge"
+	       casename="norad"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs00") {
 	       exptype="dycoms2_rf01"
@@ -323,6 +1187,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs02") {
 	       exptype="dycoms2_rf01"
@@ -335,6 +1201,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs03") {
 	       exptype="dycoms2_rf01"
@@ -347,6 +1215,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs04") {
 	       exptype="dycoms2_rf01"
@@ -359,6 +1229,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs05") {
 	       exptype="dycoms2_rf01"
@@ -371,6 +1243,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbb0") {
 	       exptype="dycoms2_rf01"
@@ -383,6 +1257,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbb1") {
 	       exptype="dycoms2_rf01"
@@ -395,6 +1271,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbc0") {
 	       exptype="dycoms2_rf01"
@@ -407,6 +1285,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbe0") {
 	       exptype="dycoms2_rf01"
@@ -419,6 +1299,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbf0") {
 	       exptype="dycoms2_rf01"
@@ -431,6 +1313,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbr0") {
 	       exptype="dycoms2_rf01"
@@ -443,6 +1327,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="norad"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbz0") {
 	       exptype="dycoms2_rf01"
@@ -455,6 +1341,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="norad"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs00") {
 	       exptype="dycoms2_rf01"
@@ -467,6 +1355,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs01") {
 	       exptype="dycoms2_rf01"
@@ -479,6 +1369,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs02") {
 	       exptype="dycoms2_rf01"
@@ -491,6 +1383,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs03") {
 	       exptype="dycoms2_rf01"
@@ -503,6 +1397,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nosgsm"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs04") {
 	       exptype="dycoms2_rf01"
@@ -515,6 +1411,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nothermo"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs05") {
 	       exptype="dycoms2_rf01"
@@ -527,6 +1425,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nocond"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs06") {
 	       exptype="dycoms2_rf01"
@@ -539,6 +1439,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nolh"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs07") {
 	       exptype="dycoms2_rf01"
@@ -551,6 +1453,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nolh"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs08") {
 	       exptype="dycoms2_rf01"
@@ -563,6 +1467,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECS"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs09") {
 	       exptype="dycoms2_rf01"
@@ -575,6 +1481,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_noliquid"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs10") {
 	       exptype="dycoms2_rf01"
@@ -587,6 +1495,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECStest2"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs11") {
 	       exptype="dycoms2_rf01"
@@ -599,6 +1509,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECStest2"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs12") {
 	       exptype="dycoms2_rf01"
@@ -611,6 +1523,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECStest2"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs13") {
 	       exptype="dycoms2_rf01"
@@ -623,6 +1537,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECStest2"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs20") {
 	       exptype="dycoms2_rf01"
@@ -635,6 +1551,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECS"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs21") {
 	       exptype="dycoms2_rf01"
@@ -647,6 +1565,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECS"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -659,6 +1579,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -671,6 +1593,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_standard"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -683,6 +1607,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_scalars"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -695,6 +1621,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_tendencies00"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -707,6 +1635,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_tendencies01"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -719,6 +1649,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_tendencies01"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -731,6 +1663,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool00"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -743,6 +1677,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool01"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -755,6 +1691,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool01"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -767,6 +1705,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales_EVScumdt"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teww00") {
 	       exptype="dycoms2_rf01"
@@ -779,6 +1719,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tewww") {
 	       exptype="dycoms2_rf01"
@@ -791,6 +1733,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx00") {
 	       exptype="dycoms2_rf01"
@@ -803,6 +1747,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx01") {
 	       exptype="dycoms2_rf01"
@@ -815,6 +1761,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx02") {
 	       exptype="dycoms2_rf01"
@@ -827,6 +1775,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx03") {
 	       exptype="dycoms2_rf01"
@@ -839,6 +1789,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx11") {
 	       exptype="dycoms2_rf01"
@@ -851,6 +1803,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="0.25"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teyy00") {
 	       exptype="dycoms2_rf01"
@@ -863,6 +1817,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teyy01") {
 	       exptype="dycoms2_rf01"
@@ -875,6 +1831,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teyy02") {
 	       exptype="dycoms2_rf01"
@@ -887,6 +1845,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teyy11") {
 	       exptype="dycoms2_rf01"
@@ -899,6 +1859,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="0.25"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tfb0") {
 	       exptype="dycoms2_rf01"
@@ -911,6 +1873,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tfb1") {
 	       exptype="dycoms2_rf01"
@@ -923,6 +1887,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="0"
 	}
 	if (expcode=="tfb2") {
 	       exptype="dycoms2_rf01"
@@ -935,6 +1901,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tfb3") {
 	       exptype="dycoms2_rf01"
@@ -947,6 +1915,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tfe0") {
 	       exptype="dycoms2_rf01"
@@ -959,6 +1929,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tfe1") {
 	       exptype="dycoms2_rf01"
@@ -971,6 +1943,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="0.2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tff0") {
 	       exptype="dycoms2_rf01"
@@ -983,6 +1957,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tff1") {
 	       exptype="dycoms2_rf01"
@@ -995,6 +1971,22 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="0.2"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="xfb0") {
+	       exptype="dycoms2_rf01"
+	       reso="1x1x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="dycoms"
+	       dt="0.04"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="becs00") {
 	       exptype="dycoms2_rf01"
@@ -1007,6 +1999,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="becs01") {
 	       exptype="dycoms2_rf01"
@@ -1019,6 +2013,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="becx00") {
 	       exptype="dycoms2_rf01"
@@ -1031,6 +2027,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="becx01") {
 	       exptype="dycoms2_rf01"
@@ -1043,6 +2041,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="fhhs00") {
 	       exptype="dycoms2_rf01"
@@ -1055,6 +2055,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="fhhs01") {
 	       exptype="dycoms2_rf01"
@@ -1067,6 +2069,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.12"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="frad00") {
 	       exptype="dycoms2_rf01"
@@ -1079,6 +2083,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="frad10") {
 	       exptype="dycoms2_rf01"
@@ -1091,6 +2097,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="fsss00") {
 	       exptype="dycoms2_rf01"
@@ -1103,6 +2111,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="fsss10") {
 	       exptype="dycoms2_rf01"
@@ -1115,6 +2125,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="fsss10") {
 	       exptype="dycoms2_rf01"
@@ -1127,6 +2139,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales_EVScumdt_NOrad"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="of00") {
 	       exptype="dycoms2_rf01"
@@ -1139,6 +2153,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="ofb0") {
 	       exptype="dycoms2_rf01"
@@ -1151,6 +2167,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="ofb1") {
 	       exptype="dycoms2_rf01"
@@ -1163,6 +2181,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="0.2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="ofb2") {
 	       exptype="dycoms2_rf01"
@@ -1175,30 +2195,176 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="norad"
 	       dt="2"
+	       div="0."
+	       lmtr="4"
+	}
+	if (expcode=="ofd0") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test_vapor"
+	       casename="dycoms"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofd1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test_cl2"
+	       casename="dycoms"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofd2") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test_second"
+	       casename="dycoms"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofd3") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test_avg"
+	       casename="dycoms"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
 	}
 	if (expcode=="ofe0") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x10"
 	       domain="64x64"
-	       lecs="true"
+	       lecs="false"
 	       lchs="false"
 	       iradtyp="2"
 	       grdtyp="1"
-	       execfile="uclales2_outrk"
-	       casename="dycoms"
-	       dt="2"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="1"
+	       div="0."
+	       lmtr="3"
 	}
 	if (expcode=="ofe1") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x10"
 	       domain="64x64"
-	       lecs="true"
+	       lecs="false"
 	       lchs="false"
 	       iradtyp="2"
 	       grdtyp="1"
-	       execfile="uclales2_outrk"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofe2") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="4"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="ofe3") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofe4") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
 	       casename="dycoms"
-	       dt="0.2"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofe5") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="2"
+	}
+	if (expcode=="ofe6") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="ofe7") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="5"
 	}
 	if (expcode=="off0") {
 	       exptype="dycoms2_rf01"
@@ -1211,8 +2377,80 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="5"
 	}
-	if (expcode=="ogb0") {
+	if (expcode=="ofh0") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofh4") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofhh") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ofp4") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="true"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="oft4") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="true"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="oge0") {
 	       exptype="dycoms2_rf01"
 	       reso="20x20x10"
 	       domain="64x64"
@@ -1220,9 +2458,123 @@ exp.name<-function(expcode) {
 	       lchs="false"
 	       iradtyp="2"
 	       grdtyp="1"
-	       execfile="uclales2_outrk"
+	       execfile="uclales2_outrk_test"
 	       casename="dycoms"
-	       dt="2"
+	       dt="4"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="ogh0") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="ogh1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="onc1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="one0") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="one1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="onp1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="true"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="onr1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="norad"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="ont1") {
+	       exptype="dycoms2_rf01"
+	       reso="20x20x10"
+	       domain="64x64"
+	       lecs="true"
+	       lchs="true"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="Release_uclales2_thetav"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="otb0") {
 	       exptype="dycoms2_rf01"
@@ -1235,6 +2587,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="1"
+	       div="0."
+	       lmtr="3"
 	}
 	if (expcode=="otb1") {
 	       exptype="dycoms2_rf01"
@@ -1247,6 +2601,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk_test"
 	       casename="dycoms"
 	       dt="1"
+	       div="0."
+	       lmtr="3"
 	}
 	if (expcode=="otb2") {
 	       exptype="dycoms2_rf01"
@@ -1259,6 +2615,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk_koren"
 	       casename="dycoms"
 	       dt="1"
+	       div="0."
+	       lmtr="5"
 	}
 	if (expcode=="otb3") {
 	       exptype="dycoms2_rf01"
@@ -1271,6 +2629,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk_koren"
 	       casename="dycoms"
 	       dt="1"
+	       div="0."
+	       lmtr="2"
 	}
 	if (expcode=="pfb0") {
 	       exptype="dycoms2_rf01"
@@ -1283,6 +2643,22 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="2"
+	}
+	if (expcode=="pfb1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="1"
+	       execfile="uclales2_outrk"
+	       casename="dycoms"
+	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="2"
 	}
 	if (expcode=="qfb0") {
 	       exptype="dycoms2_rf01"
@@ -1295,6 +2671,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk"
 	       casename="dycoms"
 	       dt="0.15625"
+	       div="0.00000375"
+	       lmtr="2"
 	}
 	if (expcode=="qfb1") {
 	       exptype="dycoms2_rf01"
@@ -1307,6 +2685,484 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_outrk_smooth"
 	       casename="dycoms"
 	       dt="0.15625"
+	       div="0.00000375"
+	       lmtr="2"
+	}
+	if (expcode=="qfb2") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="2"
+	}
+	if (expcode=="qfb3") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_koren"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="5"
+	}
+	if (expcode=="qfb4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_koren"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="0"
+	}
+	if (expcode=="qfb5") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_cldcheck"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfb6") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_cldcheck"
+	       casename="norad"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfb7") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_second"
+	       casename="norad"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfb8") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_second"
+	       casename="norad"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfb9") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_diverge"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfc0") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfc1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc2") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_nabla2"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc3") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_nabla2"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc5") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_nabla2"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc6") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc7") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc8") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfc9") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_smooth"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfd0") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_vapor"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfd1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_vapor"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfd2") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_vapor"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfd3") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test_epsi"
+	       casename="norad"
+	       dt="0.1"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfe0") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="0.5"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfe1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="norad"
+	       dt="0.125"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qfe4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qfe6") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (expcode=="qfp4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="true"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_test"
+	       casename="dycoms"
+	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb0") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="dycoms"
+	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb1") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="norad"
+	       dt="2"
+	       div="0."
+	       lmtr="3"
+	}
+	if (expcode=="qgb2") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="norad"
+	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb3") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_diverge"
+	       casename="norad"
+	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb4") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_nodiff"
+	       casename="norad"
+	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb5") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_diverge"
+	       casename="dycoms"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
+	}
+	if (expcode=="qgb6") {
+	       exptype="dycoms2_rf01"
+	       reso="5x5x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk_diverge"
+	       casename="norad"
+	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs00") {
 	       exptype="dycoms2_rf01"
@@ -1319,6 +3175,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs02") {
 	       exptype="dycoms2_rf01"
@@ -1331,6 +3189,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs03") {
 	       exptype="dycoms2_rf01"
@@ -1343,6 +3203,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs04") {
 	       exptype="dycoms2_rf01"
@@ -1355,6 +3217,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="recs05") {
 	       exptype="dycoms2_rf01"
@@ -1367,6 +3231,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4."
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbb0") {
 	       exptype="dycoms2_rf01"
@@ -1379,6 +3245,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbb1") {
 	       exptype="dycoms2_rf01"
@@ -1391,6 +3259,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbc0") {
 	       exptype="dycoms2_rf01"
@@ -1403,6 +3273,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbe0") {
 	       exptype="dycoms2_rf01"
@@ -1415,6 +3287,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbf0") {
 	       exptype="dycoms2_rf01"
@@ -1427,6 +3301,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbr0") {
 	       exptype="dycoms2_rf01"
@@ -1439,6 +3315,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="norad"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="rubbz0") {
 	       exptype="dycoms2_rf01"
@@ -1451,6 +3329,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="norad"
 	       dt="0.6"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs00") {
 	       exptype="dycoms2_rf01"
@@ -1463,6 +3343,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs01") {
 	       exptype="dycoms2_rf01"
@@ -1475,6 +3357,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs02") {
 	       exptype="dycoms2_rf01"
@@ -1487,6 +3371,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs03") {
 	       exptype="dycoms2_rf01"
@@ -1499,6 +3385,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nosgsm"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs04") {
 	       exptype="dycoms2_rf01"
@@ -1511,6 +3399,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nothermo"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs05") {
 	       exptype="dycoms2_rf01"
@@ -1523,6 +3413,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nocond"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs06") {
 	       exptype="dycoms2_rf01"
@@ -1535,6 +3427,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nolh"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs07") {
 	       exptype="dycoms2_rf01"
@@ -1547,6 +3441,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_nolh"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs08") {
 	       exptype="dycoms2_rf01"
@@ -1559,6 +3455,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECS"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs09") {
 	       exptype="dycoms2_rf01"
@@ -1571,6 +3469,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_noliquid"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs10") {
 	       exptype="dycoms2_rf01"
@@ -1583,6 +3483,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECStest2"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs11") {
 	       exptype="dycoms2_rf01"
@@ -1595,6 +3497,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECStest2"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs12") {
 	       exptype="dycoms2_rf01"
@@ -1607,6 +3511,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECStest2"
 	       casename="dycoms"
 	       dt="4"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs13") {
 	       exptype="dycoms2_rf01"
@@ -1619,6 +3525,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECStest2"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs20") {
 	       exptype="dycoms2_rf01"
@@ -1631,6 +3539,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECS"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs21") {
 	       exptype="dycoms2_rf01"
@@ -1643,6 +3553,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_cumECS"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1655,6 +3567,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="0.5"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1667,6 +3581,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_standard"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1679,6 +3595,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_scalars"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1691,6 +3609,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_tendencies00"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1703,6 +3623,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_tendencies01"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1715,6 +3637,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_tendencies01"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1727,6 +3651,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool00"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1739,6 +3665,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool01"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1751,6 +3679,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool01"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tecs30") {
 	       exptype="dycoms2_rf01"
@@ -1763,6 +3693,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales_EVScumdt"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teww00") {
 	       exptype="dycoms2_rf01"
@@ -1775,6 +3707,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tewww") {
 	       exptype="dycoms2_rf01"
@@ -1787,6 +3721,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_ECS-CHS"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx00") {
 	       exptype="dycoms2_rf01"
@@ -1799,6 +3735,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx01") {
 	       exptype="dycoms2_rf01"
@@ -1811,6 +3749,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx02") {
 	       exptype="dycoms2_rf01"
@@ -1823,6 +3763,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx03") {
 	       exptype="dycoms2_rf01"
@@ -1835,6 +3777,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="texx11") {
 	       exptype="dycoms2_rf01"
@@ -1847,6 +3791,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="0.25"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teyy00") {
 	       exptype="dycoms2_rf01"
@@ -1859,6 +3805,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teyy01") {
 	       exptype="dycoms2_rf01"
@@ -1871,6 +3819,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teyy02") {
 	       exptype="dycoms2_rf01"
@@ -1883,6 +3833,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="teyy11") {
 	       exptype="dycoms2_rf01"
@@ -1895,6 +3847,8 @@ exp.name<-function(expcode) {
 	       execfile="uclales2_evcool_test"
 	       casename="dycoms"
 	       dt="0.25"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tfb0") {
 	       exptype="dycoms2_rf01"
@@ -1907,6 +3861,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="3"
 	}
 	if (expcode=="tfb1") {
 	       exptype="dycoms2_rf01"
@@ -1919,6 +3875,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="0"
 	}
 	if (expcode=="tfb2") {
 	       exptype="dycoms2_rf01"
@@ -1931,6 +3889,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tfb3") {
 	       exptype="dycoms2_rf01"
@@ -1943,6 +3903,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tfe0") {
 	       exptype="dycoms2_rf01"
@@ -1955,6 +3917,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="1"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tfe1") {
 	       exptype="dycoms2_rf01"
@@ -1967,6 +3931,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="0.2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tff0") {
 	       exptype="dycoms2_rf01"
@@ -1979,6 +3945,8 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
 	if (expcode=="tff1") {
 	       exptype="dycoms2_rf01"
@@ -1991,20 +3959,38 @@ exp.name<-function(expcode) {
 	       execfile="Release_uclales2_thetav"
 	       casename="dycoms"
 	       dt="0.2"
+	       div="0.00000375"
+	       lmtr="4"
 	}
-	if (grdtyp!="1") {reso=paste0(substr(reso,start=1,stop=6),"x1A")}
+	if (expcode=="xfb0") {
+	       exptype="dycoms2_rf01"
+	       reso="1x1x10"
+	       domain="256x256"
+	       lecs="false"
+	       lchs="false"
+	       iradtyp="2"
+	       grdtyp="3"
+	       execfile="uclales2_outrk"
+	       casename="dycoms"
+	       dt="0.04"
+	       div="0.00000375"
+	       lmtr="4"
+	}
+	if (grdtyp!="1") {reso=paste(strsplit(reso,"x")[[1]][1],strsplit(reso,"x")[[1]][2],"1A",sep="x")}
         name=paste0(reso," dt=",dt)
         if (lecs=="true") {name=paste(name,"ECS")}
 	if (lchs=="true") {name=paste(name,"CHS")}
         if (iradtyp=="4") {name=paste(name,"FullRad")}
 	if (casename=="norad") {name=paste(name,"NoRad")}
+	if (div=="0.") {name=paste(name,"NoDiv")}
+	if (lmtr!="3") {name=paste0(name," lmtr=",lmtr)}
 	if (execfile=="uclales2_evcool_nothermo") {name=paste(name,"nothermo")}
 	if (execfile=="uclales2_evcool_nocond") {name=paste(name,"CHS")}
 	if (execfile=="uclales2_evcool_nolh") {name=paste(name,"Lv=0")}
 	if (execfile=="uclales2_evcool_cumECS") {name=paste(name,"cumECS")}
 	if (execfile=="uclales2_evcool_noliquid") {name=paste(name,"cumECS+CHS")}
 	if (lecs=="true" & execfile=="uclales2_evcool_cumECStest2") {name=paste(name,"cum")}
-        out=list(exptype=exptype,expcode=expcode,name=name,reso=reso
-	,domain=domain,lchs=lchs,lecs=lecs,iradtyp=iradtyp,grdtyp=grdtyp)
+        out=list(exptype=exptype,expcode=expcode,name=name,reso=reso,casename=casename,lmtr=lmtr,
+	domain=domain,lchs=lchs,lecs=lecs,iradtyp=iradtyp,grdtyp=grdtyp,dt=dt)
         return(out)
 }

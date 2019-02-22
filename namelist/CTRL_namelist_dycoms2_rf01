@@ -12,7 +12,7 @@
   dtlong = 2.
   distim = 300.
   timmax = 21600.
-  frqanl =  120.
+  frqanl = 120.
   frqhis = 120.
   runtype = "INITIAL"
   case_name = 'dycoms'
@@ -33,7 +33,7 @@
   th00 = 289.
   umean =  7.
   vmean = -5.5
-  zrand = 950
+  zrand = 900
   mag_pert_t = 0.01
   mag_pert_q = 0.
   div=0.00000375

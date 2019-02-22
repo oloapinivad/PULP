@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #rename your executable
-renamer=outrk_smooth
-mode=Default
+renamer=thetav
+mode=Release
 
 #set general folders
 CODEDIR=$HOME/uclales2

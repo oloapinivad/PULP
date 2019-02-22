@@ -24,7 +24,7 @@ cdozip="cdo -f nc4 -z zip"
 #parallel procs and variables selection
 #varlist=(l q w sc tr2 dwdt dwdtbuo dwdtdif hevc wtdif wtpre pr tl u v rf tr dwdtadv wtbuo wt wtadv)
 #varlist=(l q w pr tl u v rf tr scbl scft wtadv wttot wtdif wtbuo wtbecs hecs lstar cloud)
-varlist=(l q w pr tl u v rf tr scbl scft wtadv wttot wtdif wtbuo tlstar tlcum cloud hevap hcond)
+varlist=(l q w pr tl u v rf tr scbl scft wtadv wttot wtdif wtbuo tlstar tvstar lstar qstar hevap hcond)
 ll=${#varlist[@]}
 np=NP
 anyrestart=ANYRESTART
